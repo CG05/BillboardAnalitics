@@ -12,3 +12,7 @@ selenium==4.23.0
 tensorflow==2.17.0
 nltk==3.8.1
 konlpy==0.6.0
+billboard.py==7.0.2
+aiohttp==3.9.5
+redis==5.0.7
+spotipy==2.24.0
