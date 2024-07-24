@@ -26,5 +26,3 @@ def getBillboardData(s_year, e_year):
     json_data = json.dumps(yearsChart.tolist())
     with open(f'data/billboard/billboard_{s_year}to{e_year}.json', 'w') as f:
         f.write(json_data)
-        
-getBillboardData()

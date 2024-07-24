@@ -121,5 +121,3 @@ def getSpotifyData(s_year, e_year):
     
     df.to_csv(f"data/dataframes/dataframe_{s_year}to{e_year}.csv")
     label.to_csv(f"data/dataframes/label_{s_year}to{e_year}.csv")
-    
-getSpotifyData()
