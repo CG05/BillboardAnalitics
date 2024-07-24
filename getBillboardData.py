@@ -16,13 +16,12 @@ def getYearsChart(s_year, e_year):
             arr = [dayformat, song.title, song.artist, song.rank, []]
             dayarr.append(arr)
         yearchartarr.append(dayarr)
-        yearchart = np.array(yearchartarr, dtype=object)
-    return yearchart
+    return yearchartarr
 
 
 # json으로 저장
 def getBillboardData(s_year, e_year):
-    yearsChart = getYearsChart(s_year, e_year)
-    json_data = json.dumps(yearsChart.tolist())
+    yearsChartarr = getYearsChart(s_year, e_year)
+    json_data = json.dumps(yearsChartarr)
     with open(f'data/billboard/billboard_{s_year}to{e_year}.json', 'w') as f:
         f.write(json_data)
