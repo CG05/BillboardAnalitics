@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def billboardchart(request):
+    return render(request, 'billboardchart/billboardchart.html')
