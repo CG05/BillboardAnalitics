@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <style>
+        body {
+            margin: 0;
+        }
+        header {
+            background-color : black;
+            height: 100px;
+            padding: 10px;
+        }
+        header h1 {
+            margin: 0;
+            color: white;
+        }
+        footer h1 {
+            color : white;
+        }
+        footer {
+            padding: 10px;
+            background-color: black;
+            height: 300px;
+        }
+        footer h1 {
+            margin:0;
+            color : white;
+        }
+        footer p {
+            color : silver;
+        }
+    </style>
+</head>
+<body>
+    {% block script %}{% endblock %}
+    <header>
+        <h1>헤더</h1>
+    </header>
+    {% block content %}{% endblock %}
+    <footer>
+        <h1>푸터</h1>
+        <p>(주)KG에듀원 아이티뱅크 노량진 학원</p>
+        <p>서울 동작구 장승배기로 171 2층, 3층</p>
+        <p>Copyrightⓒ2024 Billboard Chart Analyzing All rights reserved.</p>
+        <p><br></p>
+        <p>I am Groot</p>
+    </footer>
+</body>
+</html>
