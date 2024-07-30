@@ -9,12 +9,162 @@
 
 {% block content %}
 <style>
-    h1 {
-        margin:10px;
+    #wrapper {
+        margin:0;
+        min-height: 100vh;
+        width: 100vw;
+    }
+
+    #top-wrapper {
+        padding: 20px 0;
+    }
+
+    #body-wrapper {
+        margin-left: 10%;
+        width: 80%;
+    }
+
+    .slider-wrapper {
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+        height: 50px;
+    }
+
+    .slider-wrapper .label {
+        flex: 0.5;
+        margin: 0;
+        min-width: 100px;
+        background-color: lightgray;
+        height: 100%;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 10px;
+    }
+
+    .slider-wrapper .slider {
+        flex: 2;
+        appearance: none;
+        height: 20px;
+        border-radius: 10px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+        margin: 0 10px;
+        cursor: pointer;
+    }
+
+    .slider-wrapper .slider:hover {
+        opacity: 1;
+    }
+
+    .slider-wrapper .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        background: black;
+        cursor: pointer;
+    }
+
+    .slider-wrapper .slider::-webkit-slider-thumb:hover {
+        background: pink;
+        transition: .2s;
+    }
+
+    .slider-wrapper .input {
+        flex: 1;
+        max-width: 100px;
+        border: lightgrey 1px solid;
+        border-radius: 10px;
+        text-align: center;
+    }
+    .slider-wrapper .input:focus {
+        outline: none;
+        border: pink solid 2px;
     }
 </style>
-<div style="height:100vh">
-    <h1>시뮬레이션 페이지</h1>
+<div id="wrapper">
+    <div id="top-wrapper">
+        <h1 class="text-center">시뮬레이션</h1>
+    </div>
+    <div id="body-wrapper">
+        <div class="slider-wrapper">
+            <div class="label">Date</div>
+            <input type="range" id="date" name="date" min="0" max="834" step="1" value="0" class="slider">
+            <input id="datenum" name="datenum" min="0" max="834" step="1" value="0" class="input">
+        </div>
+        <div class="slider-wrapper">
+            <div class="label">Danceability</div>
+            <input type="range" id="danceability" name="danceability" min="0" max="761" step="1" value="0" class="slider">
+            <input id="danceabilitynum" name="danceabilitynum" min="0" max="761" step="1" value="0" class="input">
+        </div>
+        <div class="slider-wrapper">
+            <div class="label">Energy</div>
+            <input type="range" id="energy" name="energy" min="0" max="932" step="1" value="0" class="slider">
+            <input id="energynum" name="energynum" min="0" max="932" step="1" value="0" class="input">
+        </div>
+        <div class="slider-wrapper">
+            <div class="label">Loudness</div>
+            <input type="range" id="loudness" name="loudness" min="0" max="6001" step="1" value="0" class="slider">
+            <input id="loudnessnum" name="loudnessnum" min="0" max="6001" step="1" value="0" class="input">
+        </div>
+        <div class="slider-wrapper">
+            <div class="label">Mode</div>
+            <input type="range" id="mode" name="mode" min="0" max="2" step="1" value="0" class="slider">
+            <input id="modenum" name="modenum" min="0" max="2" step="1" value="0" class="input">
+        </div>
+        <div class="slider-wrapper">
+            <div class="label">Speechiness</div>
+            <input type="range" id="speechiness" name="speechiness" min="0" max="1173" step="1" value="0" class="slider">
+            <input id="speechinessnum" name="speechinessnum" min="0" max="1173" step="1" value="0" class="input">
+        </div>
+        <div class="slider-wrapper">
+            <div class="label">Acousticness</div>
+            <input type="range" id="acousticness" name="acousticness" min="0" max="2416" step="1" value="0" class="slider">
+            <input id="acousticnessnum" name="acousticnessnum" min="0" max="2416" step="1" value="0" class="input">
+        </div>
+        <div class="slider-wrapper">
+            <div class="label">Instrumentalness</div>
+            <input type="range" id="instrumentalness" name="instrumentalness" min="0" max="3040" step="1" value="0" class="slider">
+            <input id="instrumentalnessnum" name="instrumentalnessnum" min="0" max="3040" step="1" value="0" class="input">
+        </div>
+        <div class="slider-wrapper">
+            <div class="label">Liveness</div>
+            <input type="range" id="liveness" name="liveness" min="0" max="1420" step="1" value="0" class="slider">
+            <input id="livenessnum" name="livenessnum" min="0" max="1420" step="1" value="0" class="input">
+        </div>
+        <div class="slider-wrapper">
+            <div class="label">Valence</div>
+            <input type="range" id="valence" name="valence" min="0" max="1035" step="1" value="0" class="slider">
+            <input id="valencenum" name="valencenum" min="0" max="1035" step="1" value="0" class="input">
+        </div>
+        <div class="slider-wrapper">
+            <div class="label">Tempo</div>
+            <input type="range" id="tempo" name="tempo" min="0" max="7916" step="1" value="0" class="slider">
+            <input id="temponum" name="temponum" min="0" max="7916" step="1" value="0" class="input">
+        </div>
+    </div>
 </div>
+<script>
+    /* 슬라이더와 입력칸의 값을 동기화 */
+    document.querySelectorAll('.slider-wrapper').forEach(wrapper => {
+        const slider = wrapper.querySelector('.slider');
+        const input = wrapper.querySelector('.input');
+
+        slider.addEventListener('input', () => {
+            input.value = slider.value;
+        });
+
+        input.addEventListener('input', () => {
+            slider.value = input.value;
+        });
+    });
+</script>
+
+
 
 {% endblock %}
