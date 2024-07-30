@@ -1,3 +1,5 @@
+<!-- 뇌절 디자인 테스트용 -->
+
 {% extends 'template.html' %}
 
 {% block title %}Billboard Chart{% endblock %}
@@ -23,10 +25,6 @@
         margin-right:10%;
         text-align: right;
     }
-    #charttop .info {
-        margin-right: 10%;
-        text-align: right;
-    }
     #chartlist {
         width: 80vw;
         margin-left:10vw;
@@ -35,7 +33,7 @@
         display: flex;
         align-items: center;
         width: 100%;
-        margin: 20px 0;
+        margin: 10px 0;
         border: solid 1px darkgrey;
         border-radius: 10px;
         min-height: 80px;
@@ -58,17 +56,56 @@
        font-weight: bold;
        font-size: 20px;
     }
+    .top1 {
+        min-height: 200px;
+    }
+    .top2 {
+        min-height: 150px;
+    }
+    .top3 {
+        min-height: 100px;
+    }
     .top1 .rank{
+        margin: 0 50px;
+        min-width: 100px;
+        min-height: 100px;
+        border-radius: 50px;
+        font-size: 50px;
         background-color: gold;
         color: black;
     }
+    .top1 .track {
+        font-size: 50px;
+        text-shadow: 4px 4px 2px gold;
+        font-weight: bolder;
+    }
     .top2 .rank{
+        margin: 0 30px;
+        min-width: 80px;
+        min-height: 80px;
+        border-radius: 40px;
+        font-size: 40px;
         background-color: silver;
         color: black;
     }
+    .top2 .track {
+        font-size: 40px;
+        text-shadow: 4px 4px 2px silver;
+        font-weight: bolder;
+    }
     .top3 .rank{
+        margin: 0 20px;
+        min-width: 60px;
+        min-height: 60px;
+        border-radius: 30px;
+        font-size: 30px;
         background-color: sienna ;
         color: black;
+    }
+    .top3 .track {
+        font-size: 30px;
+        text-shadow: 2px 2px 1px sienna ;
+        font-weight: bolder;
     }
     .top10 .rank {
         color:pink;
@@ -77,15 +114,12 @@
 
 </style>
 <div id="wrapper">
-    <!-- 차트 Header -->
+
     <div id="charttop">
         <h1 class="text-center">{{inputdate}} 빌보드 차트 </h1>
-        <div class="info">
-            <p>빌보드 발표 기준일 : {{ date }}</p>
-            <input type="date" id="dateinput" min="1963-01-01" value="{{ inputdate }}" class="align-middle">
-        </div>
+        <p class="">빌보드 발표 기준일 : {{date}}</p>
     </div>
-    <!-- 차트 Body -->
+
     <div id="chartlist">
         {% for c in chart %}
             {% if c.rank == 1 %}
@@ -103,15 +137,7 @@
             </div>
         {% endfor %}
     </div>
+
 </div>
-
-<script>
-    const dateinput = document.getElementById('dateinput')
-    dateinput.addEventListener("change", (e) => {
-        const selectedDate = e.target.value;
-        location.href = `/billboardchart/${selectedDate}`;
-    });
-
-</script>
 
 {% endblock %}
