@@ -26,7 +26,11 @@
     height: 50px;
 }
 
-.slider-wrapper .label {
+.label-wrapper {
+    height: 100%;
+}
+
+.label-wrapper .label {
     flex: 0.5;
     margin: 0;
     min-width: 100px;
@@ -40,6 +44,46 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.label-wrapper .info {
+    display: none;
+    position : absolute;
+    color: black;
+    background-color: pink;
+    min-width: 100px;
+    max-width: 300px;
+    border-radius: 10px;
+    z-index : 1; /*다른 요소들보다 앞에 배치*/
+    justify-content: center;
+    align-items: center;
+    opacity: .9;
+}
+
+.label-wrapper:hover .label {
+    background-color: white;
+}
+
+.label-wrapper:hover .info {
+    display: block;
+}
+
+.label-wrapper .info:hover {
+    display: none;
+}
+
+.label-wrapper .info h1 {
+    width: 100%;
+    font-size: 15px;
+    font-weight: bolder;
+    text-align: center;
+    padding: 5px;
+}
+.label-wrapper .info h2 {
+    width: 100%;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .slider-wrapper .slider {
