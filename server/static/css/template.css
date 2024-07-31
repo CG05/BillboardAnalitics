@@ -1,6 +1,7 @@
 /* 탬플릿에 적용되는 CSS */
 #content-wrapper {
-    min-height: 100vh;
+    /* 헤더와 푸터를 제외한 컨텐츠의 최소 높이는 화면 전체 높이에서 푸터 높이를 뺀 값 */
+    min-height: 100vh - 300px;
     margin-top: 56px;
     width: 66vw;
     margin-left: 17vw;

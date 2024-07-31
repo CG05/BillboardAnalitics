@@ -1,6 +1,5 @@
 #wrapper {
     margin:0;
-    min-height: 80vh;
     width: 100%;
 }
 
@@ -11,6 +10,13 @@
 #body-wrapper {
     margin-left: 10%;
     width: 80%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 80px;
+}
+
+#slider-section {
+    flex: 7;
 }
 
 .slider-wrapper {
@@ -25,10 +31,15 @@
     margin: 0;
     min-width: 100px;
     background-color: lightgray;
+    color: black;
+    font-size: 12px;
     height: 100%;
     text-align: center;
     font-weight: bold;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .slider-wrapper .slider {
@@ -38,15 +49,15 @@
     border-radius: 10px;
     background: #d3d3d3;
     outline: none;
-    opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
     margin: 0 10px;
     cursor: pointer;
+    caret-color: transparent;
 }
 
 .slider-wrapper .slider:hover {
-    opacity: 1;
+    background: white;
 }
 
 .slider-wrapper .slider::-webkit-slider-thumb {
@@ -55,7 +66,7 @@
     width: 20px;
     height: 20px;
     border-radius: 10px;
-    background: black;
+    background: rgb(70, 70, 70);
     cursor: pointer;
 }
 
@@ -67,26 +78,93 @@
 .slider-wrapper .input {
     flex: 1;
     max-width: 100px;
+    background-color: #d3d3d3;
     border: lightgrey 1px solid;
     border-radius: 10px;
     text-align: center;
 }
+
+.slider-wrapper .input:hover {
+    background-color: white;
+    transition: .2s;
+}
+
 .slider-wrapper .input:focus {
     outline: none;
     border: pink solid 2px;
 }
 
-#simulation-bottom {
-    width: 50%; 
+#result-section {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 #rank-button {
-    outline: none;
+    width: 100px;
+    height: 50px;
+    background-color: #d3d3d3;
+    border-radius: 10px;
+    box-shadow: none;
+    border: none;
+    margin-bottom: 40px;
+    font-weight: bolder;
+    box-shadow: gray 3px 3px 3px;
 }
+
+#rank-button:hover {
+    background-color: white;
+    transition: .2s;
+}
+
+#rank-button:active {
+    position: relative;
+    top: 3px;
+    left: 3px;
+    background-color: gray;
+    box-shadow: none;
+    transition: .5s;
+}
+
 #rank-label {
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #rank-num {
+    background-color: pink;
+    width: 100px;
+    height: 100px;
+    color:black;
+    border-radius: 50px;
     font-size: 30px;
     font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 20px magenta;
+}
+
+@media (max-width: 1000px) {
+    #body-wrapper {
+        flex-direction: column;
+        margin-left: 0;
+        width: 100%;
+        margin-bottom: 80px;
+    }
+
+    #slider-section, #result-section {
+        flex: 1;
+        width: 100%;
+    }
+
+    #result-section {
+        margin-top: 20px;
+    }
 }
