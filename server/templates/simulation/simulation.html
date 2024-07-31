@@ -14,75 +14,77 @@
     <div id="top-wrapper">
         <h1 class="text-center">시뮬레이션</h1>
     </div>
-    <div id="body-wrapper">
-        <form method="post" action="/simulation/" name="rank_simulation"> {% csrf_token %}
-            <div class="slider-wrapper">
-                <div class="label">Date</div>
-                <input type="range" id="date" name="date" min="0" max="834" step="1" value="{{date_input}}" class="slider">
-                <input type="number" id="datenum" name="datenum" min="0" max="834" step="1" value="{{date_input}}" class="input">
-            </div>
-            <div class="slider-wrapper">
-                <div class="label">Danceability</div>
-                <input type="range" id="danceability" name="danceability" min="0" max="761" step="1" value="{{danceability_input}}" class="slider">
-                <input type="number" id="danceabilitynum" name="danceabilitynum" min="0" max="761" step="1" value="{{danceability_input}}" class="input">
-            </div>
-            <div class="slider-wrapper">
-                <div class="label">Energy</div>
-                <input type="range" id="energy" name="energy" min="0" max="932" step="1" value="{{energy_input}}" class="slider">
-                <input type="number" id="energynum" name="energynum" min="0" max="932" step="1" value="{{energy_input}}" class="input">
-            </div>
-            <div class="slider-wrapper">
-                <div class="label">Loudness</div>
-                <input type="range" id="loudness" name="loudness" min="0" max="6001" step="1" value="{{loudness_input}}" class="slider">
-                <input type="number" id="loudnessnum" name="loudnessnum" min="0" max="6001" step="1" value="{{loudness_input}}" class="input">
-            </div>
-            <div class="slider-wrapper">
-                <div class="label">Mode</div>
-                <input type="range" id="mode" name="mode" min="0" max="2" step="1" value="{{mode_input}}" class="slider">
-                <input type="number" id="modenum" name="modenum" min="0" max="2" step="1" value="{{mode_input}}" class="input">
-            </div>
-            <div class="slider-wrapper">
-                <div class="label">Speechiness</div>
-                <input type="range" id="speechiness" name="speechiness" min="0" max="1173" step="1" value="{{speechiness_input}}" class="slider">
-                <input type="number" id="speechinessnum" name="speechinessnum" min="0" max="1173" step="1" value="{{speechiness_input}}" class="input">
-            </div>
-            <div class="slider-wrapper">
-                <div class="label">Acousticness</div>
-                <input type="range" id="acousticness" name="acousticness" min="0" max="2416" step="1" value="{{acousticness_input}}" class="slider">
-                <input type="number" id="acousticnessnum" name="acousticnessnum" min="0" max="2416" step="1" value="{{acousticness_input}}" class="input">
-            </div>
-            <div class="slider-wrapper">
-                <div class="label">Instrumentalness</div>
-                <input type="range" id="instrumentalness" name="instrumentalness" min="0" max="3040" step="1" value="{{instrumentalness_input}}" class="slider">
-                <input type="number" id="instrumentalnessnum" name="instrumentalnessnum" min="0" max="3040" step="1" value="{{instrumentalness_input}}" class="input">
-            </div>
-            <div class="slider-wrapper">
-                <div class="label">Liveness</div>
-                <input type="range" id="liveness" name="liveness" min="0" max="1420" step="1" value="{{liveness_input}}" class="slider">
-                <input type="number" id="livenessnum" name="livenessnum" min="0" max="1420" step="1" value="{{liveness_input}}" class="input">
-            </div>
-            <div class="slider-wrapper">
-                <div class="label">Valence</div>
-                <input type="range" id="valence" name="valence" min="0" max="1035" step="1" value="{{valence_input}}" class="slider">
-                <input type="number" id="valencenum" name="valencenum" min="0" max="1035" step="1" value="{{valence_input}}" class="input">
-            </div>
-            <div class="slider-wrapper">
-                <div class="label">Tempo</div>
-                <input type="range" id="tempo" name="tempo" min="0" max="7916" step="1" value="{{tempo_input}}" class="slider">
-                <input type="number" id="temponum" name="temponum" min="0" max="7916" step="1" value="{{tempo_input}}" class="input">
-            </div>
-            <div class="container text-center" id="simulation-bottom">
-                <div class="row align-items-center">
-                  <div class="col">
-                    <input id="rank-button" type="submit" value="랭킹 예측">
-                  </div>
-                  <div class="col">
-                    <span id="rank-label">Predicted Rank </span><span id="rank-num">#{{rank}}</span>
-                  </div>
+    <form method="post" action="/simulation/" name="rank_simulation"> {% csrf_token %}
+        <div id="body-wrapper">
+
+            <div id="slider-section">
+                <div class="slider-wrapper">
+                    <div class="label">Date</div>
+                    <input type="range" id="date" name="date" min="0" max="834" step="1" value="{{date_input}}" class="slider">
+                    <input type="number" id="datenum" name="datenum" min="0" max="834" step="1" value="{{date_input}}" class="input">
                 </div>
-              </div>
-        </form>
-    </div>
+                <div class="slider-wrapper">
+                    <div class="label">Danceability</div>
+                    <input type="range" id="danceability" name="danceability" min="0" max="761" step="1" value="{{danceability_input}}" class="slider">
+                    <input type="number" id="danceabilitynum" name="danceabilitynum" min="0" max="761" step="1" value="{{danceability_input}}" class="input">
+                </div>
+                <div class="slider-wrapper">
+                    <div class="label">Energy</div>
+                    <input type="range" id="energy" name="energy" min="0" max="932" step="1" value="{{energy_input}}" class="slider">
+                    <input type="number" id="energynum" name="energynum" min="0" max="932" step="1" value="{{energy_input}}" class="input">
+                </div>
+                <div class="slider-wrapper">
+                    <div class="label">Loudness</div>
+                    <input type="range" id="loudness" name="loudness" min="0" max="6001" step="1" value="{{loudness_input}}" class="slider">
+                    <input type="number" id="loudnessnum" name="loudnessnum" min="0" max="6001" step="1" value="{{loudness_input}}" class="input">
+                </div>
+                <div class="slider-wrapper">
+                    <div class="label">Mode</div>
+                    <input type="range" id="mode" name="mode" min="0" max="2" step="1" value="{{mode_input}}" class="slider">
+                    <input type="number" id="modenum" name="modenum" min="0" max="2" step="1" value="{{mode_input}}" class="input">
+                </div>
+                <div class="slider-wrapper">
+                    <div class="label">Speechiness</div>
+                    <input type="range" id="speechiness" name="speechiness" min="0" max="1173" step="1" value="{{speechiness_input}}" class="slider">
+                    <input type="number" id="speechinessnum" name="speechinessnum" min="0" max="1173" step="1" value="{{speechiness_input}}" class="input">
+                </div>
+                <div class="slider-wrapper">
+                    <div class="label">Acousticness</div>
+                    <input type="range" id="acousticness" name="acousticness" min="0" max="2416" step="1" value="{{acousticness_input}}" class="slider">
+                    <input type="number" id="acousticnessnum" name="acousticnessnum" min="0" max="2416" step="1" value="{{acousticness_input}}" class="input">
+                </div>
+                <div class="slider-wrapper">
+                    <div class="label">Instrumentalness</div>
+                    <input type="range" id="instrumentalness" name="instrumentalness" min="0" max="3040" step="1" value="{{instrumentalness_input}}" class="slider">
+                    <input type="number" id="instrumentalnessnum" name="instrumentalnessnum" min="0" max="3040" step="1" value="{{instrumentalness_input}}" class="input">
+                </div>
+                <div class="slider-wrapper">
+                    <div class="label">Liveness</div>
+                    <input type="range" id="liveness" name="liveness" min="0" max="1420" step="1" value="{{liveness_input}}" class="slider">
+                    <input type="number" id="livenessnum" name="livenessnum" min="0" max="1420" step="1" value="{{liveness_input}}" class="input">
+                </div>
+                <div class="slider-wrapper">
+                    <div class="label">Valence</div>
+                    <input type="range" id="valence" name="valence" min="0" max="1035" step="1" value="{{valence_input}}" class="slider">
+                    <input type="number" id="valencenum" name="valencenum" min="0" max="1035" step="1" value="{{valence_input}}" class="input">
+                </div>
+                <div class="slider-wrapper">
+                    <div class="label">Tempo</div>
+                    <input type="range" id="tempo" name="tempo" min="0" max="7916" step="1" value="{{tempo_input}}" class="slider">
+                    <input type="number" id="temponum" name="temponum" min="0" max="7916" step="1" value="{{tempo_input}}" class="input">
+                </div>
+            </div>
+            <div id="result-section">
+                <input id="rank-button" type="submit" value="랭킹 예측">
+                <div id="rank-label">Predicted<br>Rank </div>
+                {% if rank != 0 and rank <= 10 %}
+                    <div id="rank-num" class="text-center align-middle" style="color:deeppink">#{{rank}}</div>
+                {% else %}
+                    <div id="rank-num" class="text-center align-middle">#{{rank}}</div>
+                {% endif %}
+            </div>
+        </div>
+    </form>
 </div>
 <script>
     /* 슬라이더와 입력칸의 값을 동기화 */
