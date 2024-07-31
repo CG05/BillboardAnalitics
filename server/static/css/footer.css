@@ -1,0 +1,14 @@
+/* 푸터에 적용할 CSS */
+
+footer {
+    width: 100vw;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border-top: 2px solid gray;
+    height: 300px;
+}
+
+footer h1 {
+    color: white;
+}
