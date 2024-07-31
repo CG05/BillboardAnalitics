@@ -1,0 +1,7 @@
+/* 공통으로 적용되는 CSS 정의 */
+
+body {
+    background-color: black;
+    margin: 0;
+    color:white;
+}

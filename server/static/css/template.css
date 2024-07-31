@@ -1,27 +1,7 @@
-body {
-    margin: 0;
-}
-header {
-    background-color : black;
-    height: 100px;
-    padding: 10px;
-}
-header h1 {
-    margin: 0;
-    color: white;
-}
-footer h1 {
-    color : white;
-}
-footer {
-    padding: 10px;
-    background-color: black;
-    height: 300px;
-}
-footer h1 {
-    margin:0;
-    color : white;
-}
-footer p {
-    color : silver;
+/* 탬플릿에 적용되는 CSS */
+#content-wrapper {
+    min-height: 100vh;
+    margin-top: 56px;
+    width: 66vw;
+    margin-left: 17vw;
 }

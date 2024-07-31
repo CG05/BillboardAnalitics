@@ -1,0 +1,10 @@
+#header-nav {
+    position: fixed;
+    background-color: black;
+    color:white;
+    top: 0;
+    width: 100vw;
+    left: 0;
+    right: 0;
+}
+
