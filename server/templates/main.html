@@ -6,11 +6,36 @@
 
 {% block style %}
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <style>
+        @keyframes slideInFromLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* 이미지에 애니메이션 효과를 적용합니다. */
+        .animated-image {
+            animation: slideInFromLeft 2s ease-in-out;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
 <div style="height:100vh" id="body">
-    <h1>메인 페이지</h1>
+    <div style = "display: flex; align-items: center; height: 100%;">
+        <div class="animated-image" style = "margin-left: 40px; display: flex;">
+            <img src="{% static 'image/billboard.jpg' %}" alt="main_image">
+        </div>
+        <div style =" font-weight:bold; display: flex-column; align-items: center; margin-left: 50px; text-align:center; margin-bottom:30px;">
+            <div style = "font-size:40px; display: flex;">Do you want predict your ranking?<br><br></div>
+            <div style= "font-size: 85px;">Join us !</div> 
+        </div>
+    </div>
 </div>
 
 {% endblock %}
