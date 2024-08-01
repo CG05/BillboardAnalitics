@@ -2,6 +2,21 @@
 
 {% block header %}
 <style>
+  #header {
+    height: 107px;
+    width: 100%;
+    background-color: black;
+    border-bottom: 2px solid gray;
+    position: fixed; top: 0px;
+    display: flex;
+    margin-left: auto;
+    padding-left: 60px;
+    padding-right: 60px;
+    align-items: center;
+    box-shadow: 0 8px 30px rgb(224, 16, 138);
+    z-index: 1;
+  }
+
   .opt {
     color: white;
     font-size: 24px;
@@ -16,7 +31,7 @@
   }
 </style>
 
-<div style="height: 107px; width: 100%; background-color: black; border-bottom: 2px solid gray; position: fixed; top: 0px; display: flex; margin-left: auto; padding-left: 60px; padding-right: 60px; align-items: center; box-shadow: 0 8px 30px rgb(224, 16, 138); z-index: 1;">
+<div id="header" style="">
   <div role="button" href="" style="margin-right: 50px;" onclick="location.href='/'">
     <img src="{%static 'image/billboardlogo.png'%}" style = "width:auto; height:80px;">
   </div>
