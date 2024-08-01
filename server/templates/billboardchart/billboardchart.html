@@ -1,53 +1,191 @@
 {% extends 'template.html' %}
 
-{% block title %}Billboard Chart{% endblock %}
-
-{% block header %}
-{% endblock %}
+{% block title %}Example{% endblock %}
 
 {% load static %}
 
 {% block style %}
-    <link rel="stylesheet" href="{% static 'css/billboardchart/billboardchart.css' %}">
+    <link rel="stylesheet" href="{% static 'css/billboardchart.css' %}"> 
+    <style>
+        #wrapper {
+            width: 100%;
+        }
+        #top-wrapper {
+            margin-top: 150px;
+            width: 100%;
+        }
+        #top-label {
+            font-size: 50px;
+            font-weight: bolder;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        #date-container {
+            width: 100%;
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #date-label {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        #date-icon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        #hr1 {
+            border: white 3px solid;
+        }
+        #hr2 {
+            border: white 2px solid;
+        }
+
+        #rank1-wrapper {
+            display: flex;
+            width: 80%;
+            margin: 50px 10% 50px 10%;
+            height: 300px;
+            /* border: 2px solid red; */
+        }
+
+        #rank1-img{
+            height: 100%;
+        }
+
+        #chart-table-wrapper {
+            margin: 80px 0;
+            width: 100%;
+        }
+
+        #chart-table {
+            width: 100%;
+        }
+
+        td {
+            padding: 5px;
+            color: white;
+            text-align: center;
+        }
+
+        #chart-legend td{
+            height: 80px;
+            font-size: 18px;
+            background-color: blue;
+            font-weight: bolder;
+        }
+
+        #chart-legend #legend-rank {
+            width: 10%;
+        }
+        #chart-legend #legend-title {
+            width: 30%;
+        }
+        #chart-legend #legend-artist {
+            width: 30%;
+        }
+        #chart-legend #legend-lastweek {
+            width: 10%;
+        }
+
+        .chart-content td{
+            height: 120px;
+            background-color: rgb(54, 54, 54);
+            color: white;
+            font-size: 25px;
+            font-weight: bolder;
+            text-align: center;
+            border-bottom: 1px solid lightgray;
+        }
+        .chart-content .content-rank{
+            background: white;
+            color: black;
+            font-weight: bolder;
+        }
+        .chart-content .content-artist{
+            background: black;
+        }
+        .chart-content .content-peakpos{
+            background: black;
+        }
+        
+
+    </style>
+{% endblock %}
+
+{% block startscript %}
+{% endblock %}
+
+{% block endscript %}
+
 {% endblock %}
 
 {% block content %}
+
 <div id="wrapper">
-    <!-- 차트 Header -->
-    <div id="charttop">
-        <h1 class="text-center">{{inputdate}} 빌보드 차트 </h1>
-        <div class="info">
-            <p>빌보드 발표 기준일 : {{ date }}</p>
-            <input type="date" id="dateinput" min="1963-01-01" value="{{ inputdate }}" class="align-middle">
+    <div id="top-wrapper">
+        <div id="top-label">Billboard Hot 50™</div>
+        <div id="hr1"></div>
+        <div id="date-container">
+            <div id="date-label">{{date}}</div>
+            <!-- <input type="date" id="date-input" min="1963-01-01" value="{{ inputdate }}"> -->
+        </div>
+        <div id="hr2"></div>
+    </div>
+    <div id="rank1-wrapper">
+        <img id="rank1-img" src="{{rank1.image}}">
+        <div id="rank1-info-wrapper">
+            <div id="rank1-track">
+                
+            </div>
+            <div id="rank1-chartinfo">
+
+            </div>
         </div>
     </div>
-    <!-- 차트 Body -->
-    <div id="chartlist">
-        {% for c in chart %}
-            {% if c.rank == 1 %}
-            <div class="chartitem align-middle top1">
-            {% elif c.rank == 2 %}
-            <div class="chartitem align-middle top2">
-            {% elif c.rank == 3 %}
-            <div class="chartitem align-middle top3">
-            {% elif c.rank <= 10 %}
-            <div class="chartitem align-middle top10">
-            {% else %}
-            <div class="chartitem align-middle">
-            {% endif %}
-                <div class="rank align-middle">{{c.rank}}</div><div class="track align-middle">{{c.title}} - {{c.artist}}</div>
-            </div>
-        {% endfor %}
+
+    <div id="hr2"></div>
+
+    <div id="chart-table-wrapper">
+        <table id="chart-table">
+            <tr id="chart-legend">
+                <td id="legend-rank">Rank</td>
+                <td id="legend-title">Title</td>
+                <td id="legend-artist">Artist</td>
+                <td id="legend-lastweek">Last Week</td>
+                <td id="legend-peakpos">Peak Pos.</td>
+                <td id="legend-weeksonchart">Weeks On Chart</td>
+            </tr>
+            {% for c in chart %}
+            <tr class="chart-content">
+                {% if c.rank == 1 %}
+                    <td class="content-rank" style="background-color: gold;">{{c.rank}}</td>
+                {% elif c.rank == 2 %}
+                    <td class="content-rank" style="background-color: silver;">{{c.rank}}</td>
+                {% elif c.rank == 3 %}
+                    <td class="content-rank" style="background-color: sienna;">{{c.rank}}</td>
+                {% elif c.rank <= 10 %}
+                    <td class="content-rank" style="background-color: pink;">{{c.rank}}</td>
+                {% else %}
+                    <td class="content-rank">{{c.rank}}</td>
+                {% endif %}
+                <td class="content-title">{{c.title}}</td>
+                <td class="content-artist">{{c.artist}}</td>
+                <td class="content-lastweek">{{c.lastPos}}</td>
+                <td class="content-peakpos">{{c.peakPos}}</td>
+                <td class="content-weeksonchart">{{c.weeks}}</td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
 </div>
 
-<script>
-    const dateinput = document.getElementById('dateinput')
-    dateinput.addEventListener("change", (e) => {
-        const selectedDate = e.target.value;
-        location.href = `/billboardchart/${selectedDate}`;
-    });
-
-</script>
-
 {% endblock %}
+
