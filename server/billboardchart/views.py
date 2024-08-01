@@ -31,9 +31,10 @@ def billboardchart(request, date):
 
     # 불러온 차트에 속한 100곡을 리스트로 저장
     chartlist = []
-    for i in range(100):
+    for i in range(50):
         chartlist.append(chart[i])
     content = {
+        'rank1' : chart[0],
         'inputdate' : inputdate,
         'date' : chart.date,
         'chart' : chartlist
