@@ -1,14 +1,31 @@
 {% load static %}
 
 {% block header %}
+<style>
+  .opt {
+    color: white;
+    font-size: 24px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .opt:hover {
+    color: blue;
+  }
+
+</style>
 <link rel="stylesheet" href="{% static 'css/header.css' %}">
 
-<div style="height: 56px; width: 100%; background-color: black; border-bottom: 2px solid gray; position: fixed; top: 0px; display: flex; margin-left: auto;">
-  <div role="button" href="">
-    <img src="{%static 'image/billboardlogo.png'%}" style = "width:auto; height:54px; padding-left: 40px;">
+<div style="height: 82px; width: 100%; background-color: black; border-bottom: 2px solid gray; position: fixed; top: 0px; display: flex; margin-left: auto; padding-left: 60px; padding-right: 60px; align-items: center;">
+  <div role="button" href="" style="margin-right: 20px;" onclick="location.href='/'">
+    <img src="{%static 'image/billboardlogo.png'%}" style = "width:auto; height:80px;">
   </div>
 
-  <div>1</div>
+  <div class="opt" role="button" onclick="location.href='/introduction'">introduction</div>
+  <div class="opt" role="button" onclick="location.href='/Simulation'">Simulation </div>
+  <div class="opt" role="button" onclick="location.href='/History'">History </div>
+  <div class="opt" role="button" onclick="location.href='/BillboardChart'">BillboardChart </div>
+  
 </div>
 
 {% endblock %}
