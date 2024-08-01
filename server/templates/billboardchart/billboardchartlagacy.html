@@ -1,0 +1,53 @@
+{% extends 'template.html' %}
+
+{% block title %}Billboard Chart{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/billboardchart/billboardchartlagacy.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="wrapper">
+    <!-- 차트 Header -->
+    <div id="charttop">
+        <h1 class="text-center">{{inputdate}} 빌보드 차트 </h1>
+        <div class="info">
+            <p>빌보드 발표 기준일 : {{ date }}</p>
+            <input type="date" id="dateinput" min="1963-01-01" value="{{ inputdate }}" class="align-middle">
+        </div>
+    </div>
+    <!-- 차트 Body -->
+    <div id="chartlist">
+        {% for c in chart %}
+            {% if c.rank == 1 %}
+            <div class="chartitem align-middle top1">
+            {% elif c.rank == 2 %}
+            <div class="chartitem align-middle top2">
+            {% elif c.rank == 3 %}
+            <div class="chartitem align-middle top3">
+            {% elif c.rank <= 10 %}
+            <div class="chartitem align-middle top10">
+            {% else %}
+            <div class="chartitem align-middle">
+            {% endif %}
+                <div class="rank align-middle">{{c.rank}}</div><div class="track align-middle">{{c.title}} - {{c.artist}}</div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    const dateinput = document.getElementById('dateinput')
+    dateinput.addEventListener("change", (e) => {
+        const selectedDate = e.target.value;
+        location.href = `/billboardchart/${selectedDate}`;
+    });
+
+</script>
+
+{% endblock %}
