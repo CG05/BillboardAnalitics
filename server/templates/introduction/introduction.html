@@ -8,13 +8,111 @@
 {% load static %}
 
 {% block content %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
 <style>
-    h1 {
-        margin:10px;
+    .AUCU {
+        font-size: 2.5rem;
+        font-family: 'Poppins', sans-serif;
+        font-style: italic;
+        padding-bottom: 22px;
+        font-weight: 500;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 25px;
+        height: 100%;
+    }
+    .grid-item {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 170px;
+        border-radius: 45px;
+        border: 1px solid gray;
+        width: 420px;
+    }
+    .picture {
+        width: 40%;
+        height: 100%;
+        padding: 15px;
+        
+    }
+    .member {
+        width: 60%;
+        height: 100%;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .git.hover {
+        color: gray;
+    }
+
+    #rr {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 1px solid gray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 </style>
+
+
 <div style="height:100vh">
-    <h1>소개 페이지</h1>
+    <div>
+        <div class="AUCU" style="padding-top: 45px;">About Us</div>
+        <div style="display: flex; justify-content: center; ">
+            <div style="height: 280px; width: 60%; overflow: hidden; line-height: 2.2;">
+                신나는 댄스곡 발매 시기는 언제가 가장 좋을까요?<br>
+                내 신곡이 빌보드 차트에 들어갈 수 있을까요?<br>
+                여러분의 의문점을 해소시켜드리고자 신뢰도 높은 정보를 제공하기 위해 다양한 분석을 통한 빌보드 차트 예측 모델을 개발했습니다.<br>
+                이를 통해 발매 시기와 마케팅 전략을 보다 정확하게 계획할 수 있을 것입니다.<br>
+                여러분의 미래를 예측해보세요!</div>
+            <div style="height: 280px; width: 40%; padding-left: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div id="rr" role="button" onclick="location.href='/history/'">
+                    <span>History</span>
+                    <span>보러가기</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="AUCU" style="padding-top: 20px;">Contact Us</div>
+        <div class="grid-container" style="height: 400px;">
+            <div class="grid-item">
+                <div class="picture">
+                    <img src="{% static 'image/shin.jpg' %}" style="margin-left: 6px; width: 100%; height: 100%; border-radius: 25px;">
+                </div>
+                <div class="member">
+                    <div>신다연</div>
+                    <div style="padding-top: 15px;">tlsekdus77@naver.com</div>
+                    <div class="git" style="padding-top: 15px;" role="button" onclick="window.open('https://github.com/Dayeonee2')">https://github.com/Dayeonee2</div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="picture">사진</div>
+                <div class="member">소개글</div>
+            </div>
+            <div class="grid-item">
+                <div class="picture">사진</div>
+                <div class="member">소개글</div>
+            </div>
+            <div class="grid-item">
+                <div class="picture">사진</div>
+                <div class="member">소개글</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
