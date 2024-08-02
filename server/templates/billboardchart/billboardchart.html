@@ -50,14 +50,65 @@
 
         #rank1-wrapper {
             display: flex;
+            flex-direction: row;
             width: 80%;
             margin: 50px 10% 50px 10%;
-            height: 300px;
+            justify-content: center;
             /* border: 2px solid red; */
         }
 
         #rank1-img{
-            height: 100%;
+            min-width: 300px;
+        }
+
+        #rank1-info-wrapper {
+            margin-left: 50px;
+        }
+
+        #rank1-info-top {
+            display:flex;
+            padding-bottom: 30px;
+            border-bottom: 1px solid gray;
+        }
+
+        #rank1-rank {
+            text-align: center;
+            font-size: 50px;
+            font-weight: bolder;
+            margin-right: 30px;
+        }
+
+        #rank1-chartinfo {
+            margin-top: 50px;
+            min-width: 100%;
+            display:flex;
+            justify-content: center;
+        }
+
+        .rank1-chartinfo-item {
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        .rank1-info-label {
+            font-size: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .rank1-info-value {
+            font-size: 30px;
+            font-weight: bolder;
+            text-align: center;
+        }
+
+        #rank1-title {
+            font-size: 30px;
+            font-weight: bolder;
+        }
+
+        #rank1-artist {
+            font-size: 20px;
+            font-weight:normal;
         }
 
         #chart-table-wrapper {
@@ -96,7 +147,7 @@
         }
 
         .chart-content td{
-            height: 120px;
+            height: 100px;
             background-color: rgb(54, 54, 54);
             color: white;
             font-size: 25px;
@@ -115,8 +166,33 @@
         .chart-content .content-peakpos{
             background: black;
         }
-        
 
+        @media (max-width:1000px) {
+            #rank1-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 80%;
+                margin: 50px 10% 50px 10%;
+                /* border: 2px solid red; */
+            }
+            #rank1-img {
+                flex: 1;
+                width: 300px;
+                height: 300px;
+            }
+            #rank1-info-wrapper {
+                flex: 1;
+                margin-left: 0;
+                margin-top: 30px;
+            }
+            #rank1-rank {
+                width: auto;
+            }
+            #rank1-track {
+                margin-left: 30px;
+            }
+        }
     </style>
 {% endblock %}
 
@@ -142,11 +218,22 @@
     <div id="rank1-wrapper">
         <img id="rank1-img" src="{{rank1.image}}">
         <div id="rank1-info-wrapper">
-            <div id="rank1-track">
-                
+            <div id="rank1-info-top">
+                <div id="rank1-rank">{{rank1.rank}}</div>
+                <div id="rank1-track">
+                    <div id="rank1-title">{{rank1.title}}</div>
+                    <div id="rank1-artist">{{rank1.artist}}</div>
+                </div>
             </div>
             <div id="rank1-chartinfo">
-
+                <div class="rank1-chartinfo-item" style="border-right: 1px solid gray">
+                    <div class="rank1-info-label">Last Week</div>
+                    <div class="rank1-info-value">{{rank1.lastPos}}</div>
+                </div>
+                <div class="rank1-chartinfo-item">
+                    <div class="rank1-info-label">Weeks On Chart</div>
+                    <div class="rank1-info-value">{{rank1.weeks}}</div>
+                </div>
             </div>
         </div>
     </div>
