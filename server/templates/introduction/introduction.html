@@ -24,15 +24,16 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
-        gap: 25px;
+        gap: 24px;
         height: 100%;
+        width: 100%;
     }
     .grid-item {
         background-color: black;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 170px;
+        height: 188px;
         border-radius: 45px;
         border: 1px solid gray;
         width: 420px;
@@ -57,8 +58,8 @@
     }
 
     #rr {
-        width: 150px;
-        height: 150px;
+        width: 250px;
+        height: 250px;
         border-radius: 50%;
         border: 1px solid gray;
         display: flex;
@@ -71,17 +72,17 @@
 <div style="height:100vh">
     <div>
         <div class="AUCU" style="padding-top: 45px;">About Us</div>
-        <div style="display: flex; justify-content: center; ">
-            <div style="height: 280px; width: 60%; overflow: hidden; line-height: 2.2;">
+        <div style="display: flex;">
+            <div style="height: 280px; width: 500px; overflow: hidden; line-height: 2.2;">
                 신나는 댄스곡 발매 시기는 언제가 가장 좋을까요?<br>
                 내 신곡이 빌보드 차트에 들어갈 수 있을까요?<br>
                 여러분의 의문점을 해소시켜드리고자 신뢰도 높은 정보를 제공하기 위해 다양한 분석을 통한 빌보드 차트 예측 모델을 개발했습니다.<br>
                 이를 통해 발매 시기와 마케팅 전략을 보다 정확하게 계획할 수 있을 것입니다.<br>
                 여러분의 미래를 예측해보세요!</div>
-            <div style="height: 280px; width: 40%; padding-left: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div style="height: 280px; width: 40%; padding-left: 145px; display: flex; flex-direction: column; justify-content: center;">
                 <div id="rr" role="button" onclick="location.href='/history/'">
-                    <span>History</span>
-                    <span>보러가기</span>
+                    history<br>
+                    보러가기
                 </div>
             </div>
         </div>
