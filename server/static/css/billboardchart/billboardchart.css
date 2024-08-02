@@ -1,8 +1,241 @@
 #wrapper {
     width: 100%;
 }
-
 #top-wrapper {
-    margin-top:100px;
-    border: solid 1px red;
+    margin-top: 150px;
+    width: 100%;
+}
+#top-label {
+    font-size: 50px;
+    font-weight: bolder;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+#date-container {
+    width: 100%;
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#date-label {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.date-calendar-toggle {
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: gray;
+    border-radius: 10px;
+}
+.date-calendar-toggle-button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+#date-calendar-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+#date-calendar-input::-webkit-calendar-picker-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+#hr1 {
+    border: white 3px solid;
+}
+#hr2 {
+    border: white 2px solid;
+}
+
+#rank1-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 50px 10% 50px 10%;
+    justify-content: center;
+    /* border: 2px solid red; */
+}
+
+#rank1-img{
+    min-width: 300px;
+}
+
+#rank1-info-wrapper {
+    margin-left: 50px;
+}
+
+#rank1-info-top {
+    display:flex;
+    padding-bottom: 30px;
+    border-bottom: 1px solid gray;
+}
+#rank1-rank {
+    margin-right: 30px;
+    font-size: 80px;
+    text-align: center;
+    font-weight: bolder;
+}
+#rank1-track {
+        margin-top: 22px;
+    }
+
+#rank1-chartinfo {
+    margin-top: 50px;
+    min-width: 100%;
+    display:flex;
+    justify-content: center;
+}
+
+.rank1-chartinfo-item {
+    align-items: center;
+    padding: 0 30px;
+}
+
+.rank1-info-label {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+.rank1-info-value {
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+#rank1-title {
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+#rank1-artist {
+    font-size: 20px;
+    font-weight:normal;
+}
+
+#chart-table-wrapper {
+    margin: 80px 0;
+    width: 100%;
+}
+
+#chart-table {
+    width: 100%;
+}
+
+td {
+    padding: 5px;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#chart-legend td{
+    height: 80px;
+    font-size: 18px;
+    background-color: blue;
+    font-weight: bolder;
+}
+
+#chart-legend #legend-rank {
+    width: 10%;
+}
+#chart-legend #legend-fluct {
+    width: 5%;
+}
+#chart-legend #legend-lastweek {
+    width: 8%;
+}
+#chart-legend #legend-peakpos {
+    width: 8%;
+}
+#chart-legend #legend-weeksonchart {
+    width: 8%;
+}
+
+.chart-content td{
+    height: 100px;
+    background-color: rgb(54, 54, 54);
+    color: white;
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+    border-bottom: 1px solid lightgray;
+}
+.chart-content .content-rank{
+    font-size: 30px;
+    background: white;
+    color: black;
+    font-weight: bolder;
+}
+.chart-content .content-fluct{
+    font-size: 30px;
+    background: black;
+    color: white;
+    font-weight: bolder;
+}
+.chart-content .content-track{
+    background: black;
+}
+.chart-content .content-track .content-title{
+    text-align: left;
+    font-size: 25px;
+}
+.chart-content .content-track .content-artist{
+    text-align: left;
+    font-size: 18px;
+    font-weight: normal;
+}
+.chart-content .content-peakpos{
+    background: black;
+}
+
+@media (max-width:1000px) {
+    #rank1-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+        margin: 50px 10% 50px 10%;
+        /* border: 2px solid red; */
+    }
+    #rank1-img {
+        flex: 1;
+        width: 300px;
+        height: 300px;
+    }
+    #rank1-info-wrapper {
+        flex: 1;
+        margin-left: 0;
+        margin-top: 30px;
+    }
+    #rank1-rank {
+        display: block;
+        width: auto;
+    }
+    #rank1-track {
+        margin-left: 30px;
+    }
 }
