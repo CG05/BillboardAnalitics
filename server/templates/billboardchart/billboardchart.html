@@ -1,6 +1,6 @@
 {% extends 'template.html' %}
 
-{% block title %}Example{% endblock %}
+{% block title %}Billboard Chart{% endblock %}
 
 {% load static %}
 
@@ -70,13 +70,15 @@
             padding-bottom: 30px;
             border-bottom: 1px solid gray;
         }
-
         #rank1-rank {
-            text-align: center;
-            font-size: 50px;
-            font-weight: bolder;
             margin-right: 30px;
+            font-size: 80px;
+            text-align: center;
+            font-weight: bolder;
         }
+        #rank1-track {
+                margin-top: 22px;
+            }
 
         #rank1-chartinfo {
             margin-top: 50px;
@@ -124,6 +126,7 @@
             padding: 5px;
             color: white;
             text-align: center;
+            vertical-align: middle;
         }
 
         #chart-legend td{
@@ -136,32 +139,51 @@
         #chart-legend #legend-rank {
             width: 10%;
         }
-        #chart-legend #legend-title {
-            width: 30%;
-        }
-        #chart-legend #legend-artist {
-            width: 30%;
+        #chart-legend #legend-fluct {
+            width: 5%;
         }
         #chart-legend #legend-lastweek {
-            width: 10%;
+            width: 8%;
+        }
+        #chart-legend #legend-peakpos {
+            width: 8%;
+        }
+        #chart-legend #legend-weeksonchart {
+            width: 8%;
         }
 
         .chart-content td{
             height: 100px;
             background-color: rgb(54, 54, 54);
             color: white;
-            font-size: 25px;
+            font-size: 20px;
             font-weight: bolder;
             text-align: center;
             border-bottom: 1px solid lightgray;
         }
         .chart-content .content-rank{
+            font-size: 30px;
             background: white;
             color: black;
             font-weight: bolder;
         }
-        .chart-content .content-artist{
+        .chart-content .content-fluct{
+            font-size: 30px;
             background: black;
+            color: white;
+            font-weight: bolder;
+        }
+        .chart-content .content-track{
+            background: black;
+        }
+        .chart-content .content-track .content-title{
+            text-align: left;
+            font-size: 25px;
+        }
+        .chart-content .content-track .content-artist{
+            text-align: left;
+            font-size: 18px;
+            font-weight: normal;
         }
         .chart-content .content-peakpos{
             background: black;
@@ -187,6 +209,7 @@
                 margin-top: 30px;
             }
             #rank1-rank {
+                display: block;
                 width: auto;
             }
             #rank1-track {
@@ -227,11 +250,11 @@
             </div>
             <div id="rank1-chartinfo">
                 <div class="rank1-chartinfo-item" style="border-right: 1px solid gray">
-                    <div class="rank1-info-label">Last Week</div>
+                    <div class="rank1-info-label">LAST WEEK</div>
                     <div class="rank1-info-value">{{rank1.lastPos}}</div>
                 </div>
                 <div class="rank1-chartinfo-item">
-                    <div class="rank1-info-label">Weeks On Chart</div>
+                    <div class="rank1-info-label">WEEKS ON CHART</div>
                     <div class="rank1-info-value">{{rank1.weeks}}</div>
                 </div>
             </div>
@@ -243,12 +266,12 @@
     <div id="chart-table-wrapper">
         <table id="chart-table">
             <tr id="chart-legend">
-                <td id="legend-rank">Rank</td>
-                <td id="legend-title">Title</td>
-                <td id="legend-artist">Artist</td>
-                <td id="legend-lastweek">Last Week</td>
-                <td id="legend-peakpos">Peak Pos.</td>
-                <td id="legend-weeksonchart">Weeks On Chart</td>
+                <td id="legend-rank">RANK</td>
+                <td id="legend-fluct"></td>
+                <td id="legend-track"></td>
+                <td id="legend-lastweek">LAST WEEK</td>
+                <td id="legend-peakpos">PEAK POS.</td>
+                <td id="legend-weeksonchart">WEEKS ON CHART</td>
             </tr>
             {% for c in chart %}
             <tr class="chart-content">
@@ -263,8 +286,19 @@
                 {% else %}
                     <td class="content-rank">{{c.rank}}</td>
                 {% endif %}
-                <td class="content-title">{{c.title}}</td>
-                <td class="content-artist">{{c.artist}}</td>
+                <td class="content-fluct">
+                    {% if c.rank < c.lastPos %}
+                        <div style="color:green">▲</div>
+                    {% elif c.rank > c.lastPos %}
+                        <div style="color:red">▼</div>
+                    {% else %}
+                        <div>▶</div>
+                    {% endif %}
+                </td>
+                <td class="content-track">
+                    <div class="content-title">{{c.title}}</div>
+                    <div class="content-artist">{{c.artist}}</div>
+                </td>
                 <td class="content-lastweek">{{c.lastPos}}</td>
                 <td class="content-peakpos">{{c.peakPos}}</td>
                 <td class="content-weeksonchart">{{c.weeks}}</td>
