@@ -20,20 +20,56 @@
         padding-bottom: 22px;
         font-weight: 500;
     }
+    #aboutus-container {
+        display: flex;
+    }
+    #aboutus {
+        height: 280px; 
+        overflow: hidden; 
+        line-height: 2.2;
+    }
+    #rr-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #rr {
+        margin: 15px;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 30px;
+        min-width: 250px;
+        max-height: 150px;
+        min-height: 250px;
+        max-height: 250px;
+        border-radius: 50%;
+        border: 1px solid magenta;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: inset 0 0 20px magenta;
+        transition: .4s;
+    }
+    #rr:hover {
+        box-shadow: inset 0 0 60px magenta;
+        transition: .4s;
+    }
     .grid-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
         gap: 24px;
-        height: 100%;
+        height: auto;
         width: 100%;
+        margin-bottom: 100px;
     }
     .grid-item {
         background-color: black;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 188px;
+        height: auto;
         border-radius: 45px;
         border: 1px solid gray;
         width: 420px;
@@ -56,32 +92,37 @@
     .git.hover {
         color: gray;
     }
-
-    #rr {
-        width: 250px;
-        height: 250px;
-        border-radius: 50%;
-        border: 1px solid gray;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    @media (max-width: 1000px) {
+        .grid-container {
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+            grid-template-columns: auto;
+        }
+        #aboutus-container {
+            flex-direction: column;
+        }
+        #aboutus {
+            flex: 1;
+        }
+        #rr-container {
+            flex: 1;
+        }
     }
 </style>
 
 
-<div style="min-height:100vh">
+<div style="min-height: 100vh; width: 100%;">
     <div>
         <div class="AUCU" style="padding-top: 45px;">About Us</div>
-        <div style="display: flex;">
-            <div style="height: 280px; width: 500px; overflow: hidden; line-height: 2.2;">
+        <div id="aboutus-container">
+            <div id="aboutus">
                 신나는 댄스곡 발매 시기는 언제가 가장 좋을까요?<br>
                 내 신곡이 빌보드 차트에 들어갈 수 있을까요?<br>
                 여러분의 의문점을 해소시켜드리고자 신뢰도 높은 정보를 제공하기 위해 다양한 분석을 통한 빌보드 차트 예측 모델을 개발했습니다.<br>
                 이를 통해 발매 시기와 마케팅 전략을 보다 정확하게 계획할 수 있을 것입니다.<br>
                 여러분의 미래를 예측해보세요!</div>
-            <div style="height: 280px; width: 40%; padding-left: 145px; display: flex; flex-direction: column; justify-content: center;">
+            <div id="rr-container">
                 <div id="rr" role="button" onclick="location.href='/history/'">
-                    history<br>
+                    HISTORY<br>
                     보러가기
                 </div>
             </div>

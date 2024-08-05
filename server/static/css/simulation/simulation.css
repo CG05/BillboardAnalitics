@@ -6,6 +6,16 @@
 #top-wrapper {
     padding: 20px 0;
     cursor:default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#top-wrapper h1 {
+    font-family: 'Roboto', sans-serif; 
+    font-style: italic; 
+    margin-top:14px; 
+    font-weight:400;
 }
 
 #body-wrapper {

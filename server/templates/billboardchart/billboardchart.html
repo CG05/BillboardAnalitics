@@ -62,7 +62,7 @@
 
     <div id="hr2"></div>
 
-    <div id="chart-table-wrapper">
+    <div id="chart-table-wrapper" style="overflow: auto;">
         <table id="chart-table">
             <tr id="chart-legend">
                 <td id="legend-rank">RANK</td>
@@ -86,9 +86,9 @@
                     <td class="content-rank">{{c.rank}}</td>
                 {% endif %}
                 <td class="content-fluct">
-                    {% if c.lastPos == 0 %}
+                    {% if c.lastPos == 0 and c.weeks == 1 %}
                         <div style="color:yellow; font-size: 15px;">New</div>
-                    {% elif c.rank < c.lastPos %}
+                    {% elif c.lastPos == 0 or c.rank < c.lastPos %}
                         <div style="color:green">▲</div>
                     {% elif c.rank > c.lastPos %}
                         <div style="color:red">▼</div>
