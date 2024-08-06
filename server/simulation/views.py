@@ -37,14 +37,12 @@ def simulation(request):
         tempo = request.POST.get('tempo')
 
         import numpy as np
-        data = np.array([date, danceability, energy, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo])
+        data = np.array([[date, danceability, energy, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo]], dtype=np.int32)
 
         # rank 계산 
 
         # =============== 공사중 =====================
         import pickle
-        # with open('../models/Standardized.pkl', 'rb') as f:
-        #     standardized_model = pickle.load(f)
         # 표준화 모델 로드
         # try:
         #     with open('../models/Standardized.pkl', 'rb') as f:
@@ -52,21 +50,21 @@ def simulation(request):
         # except:
         #     print("Standardized Model Not Found")
         # PCA 모델 로드
-        # try:
-        #     with open('C:\itbank\preject2\project\BillboardAnalitics\models\Standardized.pkl', 'rb') as f:
-        #         standardized_PCA_model = pickle.load(f)
-        # except:
-        #     print("Standardized PCA Model Not Found")
-
-        # try:
-        #     rank = standardized_model.predict(data)
-        #     print("Predicted Rank :", rank)
-        # except Exception as e:
-        #     print(e)
-        #     rank = random.randint(1, 100)
+        try:
+            with open('../models/Standardized_PCA.pkl', 'rb') as f:
+                standardized_PCA_model = pickle.load(f)
+        except Exception as e:
+            print(e)
+        try:
+            # rank = standardized_model.predict(data)[0]
+            rank = int(standardized_PCA_model.predict(data)[0])
+            print("Predicted Rank :", rank)
+        except Exception as e:
+            print(e)
+            rank = random.randint(1, 100)
 
         # 랜덤값 출력
-        rank = random.randint(1, 100)
+        # rank = random.randint(1, 100)
 
         # Audio Feature 수치를 사용자가 설정한 수치값으로 변경 후 Response
         content['rank'] = rank
