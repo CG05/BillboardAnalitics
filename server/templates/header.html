@@ -29,9 +29,65 @@
     color: rgb(226, 82, 166);
     transition: 0.2s;
   }
+  #dropdownbtn {
+    width: 50px;
+    height: 50px;
+    right: 30px;
+    background-color: gray;
+    font-size: 25px;
+    font-weight: bolder;
+    border-radius: 10px;
+    color: white;
+    display: none;
+    margin-left: auto;
+    cursor: pointer;
+  }
+  .dropdownitem {
+    font-size: 15px;
+    font-weight: bold;
+    background-color: lightgray;
+    color: black;
+    border: solid 1px gray;
+    width: 150px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .2s;
+  }
+  .dropdownitem:hover {
+    background-color: gray;
+    transition: .2s;
+  }
+  @media (max-width: 1000px) {
+    .opt {
+      display: none;
+    }
+    #dropdownbtn {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #dropdownmenu {
+      display: block;
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      top:50px;
+      right: 0;
+    }
+    .dropdownmenu-active {
+      visibility: visible !important; 
+      opacity: 1 !important;
+    }
+  }
 </style>
 
-<div id="header" style="">
+
+
+<div id="header" style>
   <div role="button" href="" style="margin-right: 50px;" onclick="location.href='/'">
     <img src="{%static 'image/billboardlogo.png'%}" style = "width:auto; height:80px;">
   </div>
@@ -40,7 +96,30 @@
   <div class="opt" role="button" onclick="location.href='/simulation/'">Simulation </div>
   <div class="opt" role="button" onclick="location.href='/history/'">History </div>
   <div class="opt" role="button" onclick="location.href='/billboardchart/'">BillboardChart </div>
+
+  <div id="dropdownbtn">▽
+    <div id="dropdownmenu">
+      <div class="dropdownitem" onclick="location.href='/introduction/'">Introduction</div>
+      <div class="dropdownitem" onclick="location.href='/simulation/'">Simulation</div>
+      <div class="dropdownitem" onclick="location.href='/history/'">History</div>
+      <div class="dropdownitem" onclick="location.href='/billboardchart/'">BillboardChart</div>
+    </div>
+  </div>
   
 </div>
+
+<script>
+  const dropdownbtn = document.getElementById("dropdownbtn");
+  const dropdownmenu = document.getElementById("dropdownmenu");
+  dropdownbtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (dropdownmenu.classList.contains('dropdownmenu-active')) {
+      dropdownmenu.classList.remove("dropdownmenu-active");
+    }
+    else {
+      dropdownmenu.classList.add("dropdownmenu-active");
+    }
+  })
+</script>
 
 {% endblock %}
