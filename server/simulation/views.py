@@ -36,7 +36,36 @@ def simulation(request):
         valence = request.POST.get('valence')
         tempo = request.POST.get('tempo')
 
-        # rank 계산 (지금은 단순 랜덤값 출력하지만 모델이 완성되면 rank에 랜덤값 대신 모델 예측값을 대입하면 끝)
+        import numpy as np
+        data = np.array([date, danceability, energy, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo])
+
+        # rank 계산 
+
+        # =============== 공사중 =====================
+        import pickle
+        # with open('../models/Standardized.pkl', 'rb') as f:
+        #     standardized_model = pickle.load(f)
+        # 표준화 모델 로드
+        # try:
+        #     with open('../models/Standardized.pkl', 'rb') as f:
+        #         standardized_model = pickle.load(f)
+        # except:
+        #     print("Standardized Model Not Found")
+        # PCA 모델 로드
+        # try:
+        #     with open('C:\itbank\preject2\project\BillboardAnalitics\models\Standardized.pkl', 'rb') as f:
+        #         standardized_PCA_model = pickle.load(f)
+        # except:
+        #     print("Standardized PCA Model Not Found")
+
+        # try:
+        #     rank = standardized_model.predict(data)
+        #     print("Predicted Rank :", rank)
+        # except Exception as e:
+        #     print(e)
+        #     rank = random.randint(1, 100)
+
+        # 랜덤값 출력
         rank = random.randint(1, 100)
 
         # Audio Feature 수치를 사용자가 설정한 수치값으로 변경 후 Response
