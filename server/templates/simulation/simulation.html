@@ -20,7 +20,7 @@
     <form method="post" action="/simulation/" name="rank_simulation"> {% csrf_token %}
         <div id="body-wrapper">
             <div id="slider-section">
-                <div class="slider-wrapper">
+                <div class="slider-wrapper2">
                     <div class="label-wrapper">
                         <div class="label">Date</div>
                         <div class="info">
@@ -29,7 +29,9 @@
                         </div>
                     </div>
                     {% comment %} <input type="range" id="date" name="date" min="3132" max="3288" step="1" value="{{date_input}}" class="slider"> {% endcomment %}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="number" id="dateyear" name="dateyear" min="2023" max="2025" step="1" value="{{dateyear_input}}" class="input">년
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="number" id="datemonth" name="datemonth" min="1" max="12" step="1" value="{{datemonth_input}}" class="input">월
 
                 </div>

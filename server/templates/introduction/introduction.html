@@ -60,28 +60,36 @@
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
         gap: 24px;
-        height: auto;
+        /* height: auto; */
         width: 100%;
-        margin-bottom: 100px;
     }
     .grid-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .grid-item-content {
         background-color: black;
         display: flex;
-        justify-content: center;
+        justify-content: left;
         align-items: center;
-        height: auto;
+        height: 200px;
         border-radius: 45px;
         border: 1px solid gray;
-        width: 420px;
+        width: 100%;
+        padding: 10px;
     }
     .picture {
-        width: 40%;
         height: 100%;
         padding: 15px;
-        
+    }
+    .picture img {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
     }
     .member {
-        width: 60%;
         height: 100%;
         padding: 15px;
         display: flex;
@@ -92,11 +100,21 @@
     .git.hover {
         color: gray;
     }
-    @media (max-width: 1000px) {
+    @media (max-width: 1300px) {
         .grid-container {
             grid-template-rows: 1fr 1fr 1fr 1fr;
             grid-template-columns: auto;
         }
+        .grid-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .grid-item-content {
+            min-width: 500px;
+        }
+    }
+    @media (max-width: 1000px) {
         #aboutus-container {
             flex-direction: column;
         }
@@ -110,7 +128,7 @@
 </style>
 
 
-<div style="min-height: 100vh; width: 100%;">
+<div style="min-height: 100vh; width: 100%; margin-bottom: 100px;">
     <div>
         <div class="AUCU" style="padding-top: 45px;">About Us</div>
         <div id="aboutus-container">
@@ -130,28 +148,54 @@
     </div>
     <div>
         <div class="AUCU" style="padding-top: 20px;">Contact Us</div>
-        <div class="grid-container" style="height: 400px;">
+        <div class="grid-container">
             <div class="grid-item">
-                <div class="picture">
-                    <img src="{% static 'image/shin.jpg' %}" style="margin-left: 6px; width: 100%; height: 100%; border-radius: 25px;">
+                <div class="grid-item-content">
+                    <div class="picture">
+                        <img src="{% static 'image/shin.jpg' %}" style="margin-left: 6px; width: 100%; height: 100%; border-radius: 25px;">
+                    </div>
+                    <div class="member">
+                        <div>신다연</div>
+                        <div style="padding-top: 15px;">tlsekdus77@naver.com</div>
+                        <div class="git" style="padding-top: 15px;" role="button" onclick="window.open('https://github.com/Dayeonee2')">https://github.com/Dayeonee2</div>
+                    </div>
                 </div>
-                <div class="member">
-                    <div>신다연</div>
-                    <div style="padding-top: 15px;">tlsekdus77@naver.com</div>
-                    <div class="git" style="padding-top: 15px;" role="button" onclick="window.open('https://github.com/Dayeonee2')">https://github.com/Dayeonee2</div>
+            </div>
+            <div class="grid-item">
+                <div class="grid-item-content">
+                    <div class="picture">
+                        <img src="{% static 'image/kgitedulogo.png' %}" style="margin-left: 6px; border-radius: 25px;">
+                    </div>
+                    <div class="member">
+                        <div>성민규</div>
+                        <div style="padding-top: 15px;">test123@naver.com</div>
+                        <div class="git" style="padding-top: 15px;" role="button" onclick="window.open('https://github.com/')">https://github.com/</div>
+                    </div>
                 </div>
             </div>
             <div class="grid-item">
-                <div class="picture">사진</div>
-                <div class="member">소개글</div>
+                <div class="grid-item-content">
+                    <div class="picture">
+                        <img src="{% static 'image/kgitedulogo.png' %}" style="margin-left: 6px; width: 100%; height: 100%; border-radius: 25px;">
+                    </div>
+                    <div class="member">
+                        <div>성철규</div>
+                        <div style="padding-top: 15px;">test456@naver.com</div>
+                        <div class="git" style="padding-top: 15px;" role="button" onclick="window.open('https://github.com/CG05')">https://github.com/CG05</div>
+                    </div>
+                </div>
             </div>
             <div class="grid-item">
-                <div class="picture">사진</div>
-                <div class="member">소개글</div>
-            </div>
-            <div class="grid-item">
-                <div class="picture">사진</div>
-                <div class="member">소개글</div>
+                <div class="grid-item-content">
+                    <div class="picture">
+                        <img src="{% static 'image/kgitedulogo.png' %}" style="margin-left: 6px; width: 100%; height: 100%; border-radius: 25px;">
+                    </div>
+                    <div class="member">
+                        <div>현창민</div>
+                        <div style="padding-top: 15px;">hcm1206@naver.com</div>
+                        <div class="git" style="padding-top: 15px;" role="button" onclick="window.open('https://github.com/hcm1206')">https://github.com/hcm1206</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
