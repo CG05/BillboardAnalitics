@@ -6,7 +6,7 @@
 {% load static %}
 
 {% block style %}
-    <link rel="stylesheet" href="{% static 'css/history.css' %}"> 
+    <!-- <link rel="stylesheet" href="{% static 'css/history.css' %}">  -->
     <style>
         #wrapper {
             width: 100%;
@@ -32,6 +32,7 @@
         }
         .category-content > div {
             margin: 30px 0;
+            opacity: 0;
         }
         .text-section {
 
@@ -67,6 +68,11 @@
                 right: auto;
             }
         }
+
+        .section-active {
+            opacity: 1 !important;
+            transition: 1s !important;
+        }
     </style>  
 {% endblock %}
 
@@ -78,7 +84,21 @@
 
 {% block endscript %}
     <script>
+        const io = new IntersectionObserver(sections => {
+        sections.forEach(s => {
+            if (s.intersectionRatio > 0) {
+                s.target.classList.add('section-active');
+            }
+            else {
+                s.target.classList.remove('section-active');
+            }
+        })
+        })
 
+        const sectionList = document.querySelectorAll('.category-content > div');
+        sectionList.forEach((s) => {
+            io.observe(s);
+        })
     </script>
 {% endblock %}
 
