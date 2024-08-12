@@ -139,10 +139,12 @@
 #chart-table-wrapper {
     margin: 80px 0;
     width: 100%;
+    overflow: auto;
 }
 
 #chart-table {
     width: 100%;
+    border-collapse: collapse;
 }
 
 td {
