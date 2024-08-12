@@ -12,14 +12,7 @@
 {% endblock %}
 
 {% block endscript %}
-<script src="{% static 'js/billboardchart.js' %}"></script>
-<!-- <script>
-    const dateinput = document.getElementById('date-calendar-input')
-    dateinput.addEventListener("change", (e) => {
-        const selectedDate = e.target.value;
-        location.href = `/billboardchart/${selectedDate}`;
-    });
-</script> -->
+    <script src="{% static 'js/billboardchart.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -62,7 +55,7 @@
 
     <div id="hr2"></div>
 
-    <div id="chart-table-wrapper" style="overflow: auto;">
+    <div id="chart-table-wrapper">
         <table id="chart-table">
             <tr id="chart-legend">
                 <td id="legend-rank">RANK</td>
