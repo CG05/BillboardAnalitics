@@ -2,7 +2,7 @@ from django.shortcuts import render
 import random
 
 def simulation(request):
-    # 시뮬레이션 페이지 요청에 보낼 Audio Feauture별 수치를 우선 0으로 초기화
+    # 시뮬레이션 페이지 요청에 보낼 Audio Feauture별 수치를 우선 초기화
     content = {
         'dateyear_input' : 2023,
         'datemonth_input' : 1,
@@ -25,7 +25,8 @@ def simulation(request):
     # POST 요청일 경우(시뮬레이션 페이지에서 Audio Feauture을 설정하여 POST 요청했을 경우)
     elif request.method == 'POST':
         # 유저가 설정한 Audio Feauture 수치를 모두 가져옴
-        date = request.POST.get('date')
+        dateyear = request.POST.get('dateyear')
+        datemonth = request.POST.get('datemonth')
         danceability = request.POST.get('danceability')
         energy = request.POST.get('energy')
         loudness = request.POST.get('loudness')
@@ -36,9 +37,20 @@ def simulation(request):
         liveness = request.POST.get('liveness')
         valence = request.POST.get('valence')
         tempo = request.POST.get('tempo')
+        
+        from datetime import datetime
+        defDate = datetime.strptime('2023-01-01', '%Y-%m-%d')
+        dateStr = f"{dateyear}-{datemonth}" + '-01'
+        dateSet = datetime.strptime(dateStr, '%Y-%m-%d')
+        deltaWeek = (dateSet - defDate).days // 7
+        date = 3132 + deltaWeek
+        print("Date : ", date)
 
         import numpy as np
         temp_data = np.array([[date, danceability, energy, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo]], dtype=np.int32)
+        features = ['date', 'danceability', 'energy', 'loudness', 'mode', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo']
+        import pandas as pd
+        temp_data = pd.DataFrame(temp_data, columns=features)
 
         # rank 계산 
 
@@ -76,7 +88,8 @@ def simulation(request):
 
         # Audio Feature 수치를 사용자가 설정한 수치값으로 변경 후 Response
         content['rank'] = rank
-        content['date_input'] = date
+        content['dateyear_input'] = dateyear
+        content['datemonth_input'] = datemonth
         content['danceability_input'] = danceability
         content['energy_input'] = energy
         content['loudness_input'] = loudness

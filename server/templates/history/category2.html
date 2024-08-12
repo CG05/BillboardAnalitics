@@ -1,0 +1,42 @@
+{% load static %}
+
+{% block category2 %}
+<div class="category-wrapper">
+    <div class="category-top">
+        <h2>Category 2</h2>
+    </div>
+    <div class="category-content">
+        <div class="text-section">
+            <h3>텍스트 섹션</h3>
+            <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa repellendus, aperiam repellat, debitis ullam maiores quasi excepturi provident fuga ad, asperiores sequi iste expedita nostrum ut officiis natus aut dolore?</div>
+        </div>
+        <div class="image-section">
+            <h3>이미지 섹션</h3>
+            <div class="img-wrapper">
+                <img src="{% static 'image/kgitedulogo.png' %}">
+            </div>
+        </div>
+        <div class="horizental-section">
+            <h3>수평 섹션 - 텍스트, 이미지</h3>
+            <div class="horizental-section-content">
+                <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum repellendus distinctio adipisci, voluptatem dolores asperiores quae mollitia dolore laboriosam aperiam magni, iure consectetur possimus quos, at reiciendis. Pariatur, officiis tenetur.</div>
+                <img src="{% static 'image/kgitedulogo.png' %}">
+            </div>
+        </div>
+        <div class="horizental-section">
+            <h3>수평 섹션 - 이미지, 텍스트</h3>
+            <div class="horizental-section-content">
+                <img src="{% static 'image/kgitedulogo.png' %}">
+                <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum repellendus distinctio adipisci, voluptatem dolores asperiores quae mollitia dolore laboriosam aperiam magni, iure consectetur possimus quos, at reiciendis. Pariatur, officiis tenetur.</div>
+            </div>
+        </div>
+        <div class="vertical-section">
+            <h3>수직 섹션</h3>
+            <div class="img-wrapper">
+                <img src="{% static 'image/kgitedulogo.png' %}">
+            </div>
+            <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa repellendus, aperiam repellat, debitis ullam maiores quasi excepturi provident fuga ad, asperiores sequi iste expedita nostrum ut officiis natus aut dolore?</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,20 +1,106 @@
+
 {% extends 'template.html' %}
 
-{% block title %}Prediction History{% endblock %}
-
-{% block style %}
-{% endblock %}
+{% block title %}History{% endblock %}
 
 {% load static %}
 
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/history.css' %}"> 
+    <style>
+        #wrapper {
+            width: 100%;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        #top-wrapper {
+            width: 100%;
+        }
+        #top-wrapper h1 {
+            font-weight: bolder;
+        }
+        .hr1 {
+            margin: 30px 0;
+            border: 3px white solid;
+        }
+        .hr2 {
+            margin: 25px 0;
+            border: 2px white solid;
+        }
+        .category-top {
+            margin: 30px 0;
+        }
+        .category-content > div {
+            margin: 30px 0;
+        }
+        .text-section {
+
+        }
+        .image-section {
+
+        }
+        .image-section .img {
+            
+        }
+        .img-wrapper {
+            max-width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .horizental-section-content {
+            display:flex;
+        }
+        .horizental-section-content img {
+            right: 0;
+        }
+        @media (max-width: 800px) {
+            .horizental-section-content {
+                display:flex;
+                flex-direction: column;
+            }
+            .horizental-section-content div {
+                flex: 1;
+            }
+            .horizental-section-content img {
+                flex: 1;
+                right: auto;
+            }
+        }
+    </style>  
+{% endblock %}
+
+{% block startscript %}
+    <script>
+
+    </script>
+{% endblock %}
+
+{% block endscript %}
+    <script>
+
+    </script>
+{% endblock %}
+
 {% block content %}
-<style>
-    h1 {
-        margin:10px;
-    }
-</style>
-<div style="height:100vh">
-    <h1>예측값 비교 페이지</h1>
+
+<div id="wrapper">
+    <div id="top-wrapper">
+        <h1>History</h1>
+    </div>
+    <div class="hr1"></div>
+    <div id="body-wrapper">
+        {% include 'history/category1.html' %}
+        <div class="hr2"></div>
+        {% include 'history/category2.html' %}
+        <div class="hr2"></div>
+        {% include 'history/category3.html' %}
+        <div class="hr2"></div>
+        {% include 'history/category4.html' %}
+    </div>
+
+
+    
 </div>
 
 {% endblock %}

@@ -37,6 +37,13 @@
     height: 50px;
 }
 
+.slider-wrapper2 {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    height: 50px;
+}
+
 .label-wrapper {
     height: 100%;
 }
@@ -159,6 +166,26 @@
 }
 
 .slider-wrapper .input:focus {
+    outline: none;
+    border: pink solid 2px;
+}
+
+.slider-wrapper2 .input {
+    flex: 1;
+    max-width: 100px;
+    background-color: #d3d3d3;
+    border: lightgrey 1px solid;
+    border-radius: 10px;
+    text-align: center;
+    transition: .2s;
+}
+
+.slider-wrapper2 .input:hover {
+    background-color: white;
+    transition: .2s;
+}
+
+.slider-wrapper2 .input:focus {
     outline: none;
     border: pink solid 2px;
 }
