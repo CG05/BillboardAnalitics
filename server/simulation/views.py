@@ -4,7 +4,8 @@ import random
 def simulation(request):
     # 시뮬레이션 페이지 요청에 보낼 Audio Feauture별 수치를 우선 0으로 초기화
     content = {
-        'date_input' : 0,
+        'dateyear_input' : 2023,
+        'datemonth_input' : 1,
         'danceability_input' : 0,
         'energy_input' : 0,
         'loudness_input' : 0,
@@ -37,7 +38,7 @@ def simulation(request):
         tempo = request.POST.get('tempo')
 
         import numpy as np
-        data = np.array([[date, danceability, energy, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo]], dtype=np.int32)
+        temp_data = np.array([[date, danceability, energy, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo]], dtype=np.int32)
 
         # rank 계산 
 
@@ -51,13 +52,20 @@ def simulation(request):
         #     print("Standardized Model Not Found")
         # PCA 모델 로드
         try:
-            with open('../models/Standardized_PCA.pkl', 'rb') as f:
-                standardized_PCA_model = pickle.load(f)
+            with open('../models/Standardized_LDA10.pkl', 'rb') as f:
+                standardized_LDA_model = pickle.load(f)
+                
+            with open('../models/lda.pkl', 'rb') as f:
+                lda = pickle.load(f)
+                
+            with open('../models/StdScaler.pkl', 'rb') as f:
+                stdScaler = pickle.load(f)
         except Exception as e:
             print(e)
         try:
-            # rank = standardized_model.predict(data)[0]
-            rank = int(standardized_PCA_model.predict(data)[0])
+            scaled_data = stdScaler.transform(temp_data)
+            data = lda.transform(scaled_data)
+            rank = int(standardized_LDA_model.predict(data)[0])
             print("Predicted Rank :", rank)
         except Exception as e:
             print(e)

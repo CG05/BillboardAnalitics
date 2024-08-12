@@ -25,11 +25,13 @@
                         <div class="label">Date</div>
                         <div class="info">
                             <h1>발매 시기</h1>
-                            <h2>0 ~ 834</h2>
+                            <h2>2023년1월 ~ 2025년12월</h2>
                         </div>
                     </div>
-                    <input type="range" id="date" name="date" min="0" max="834" step="1" value="{{date_input}}" class="slider">
-                    <input type="number" id="datenum" name="datenum" min="0" max="834" step="1" value="{{date_input}}" class="input">
+                    {% comment %} <input type="range" id="date" name="date" min="3132" max="3288" step="1" value="{{date_input}}" class="slider"> {% endcomment %}
+                    <input type="number" id="dateyear" name="dateyear" min="2023" max="2025" step="1" value="{{dateyear_input}}" class="input">년
+                    <input type="number" id="datemonth" name="datemonth" min="1" max="12" step="1" value="{{datemonth_input}}" class="input">월
+
                 </div>
                 <div class="slider-wrapper">
                     <div class="label-wrapper">
@@ -69,11 +71,11 @@
                         <div class="label">Mode</div>
                         <div class="info">
                             <h1>0 : 마이너키(단조), 1 : 메이저키(장조)</h1>
-                            <h2>0 ~ 2</h2>
+                            <h2>0 ~ 1</h2>
                         </div>
                     </div>
-                    <input type="range" id="mode" name="mode" min="0" max="2" step="1" value="{{mode_input}}" class="slider">
-                    <input type="number" id="modenum" name="modenum" min="0" max="2" step="1" value="{{mode_input}}" class="input">
+                    <input type="range" id="mode" name="mode" min="0" max="1" step="1" value="{{mode_input}}" class="slider">
+                    <input type="number" id="modenum" name="modenum" min="0" max="1" step="1" value="{{mode_input}}" class="input">
                 </div>
                 <div class="slider-wrapper">
                     <div class="label-wrapper">
@@ -135,7 +137,7 @@
                         <div class="label">Tempo</div>
                         <div class="info">
                             <h1>곡의 빠르기 수치</h1>
-                            <h2>0 ~ 3040</h2>
+                            <h2>0 ~ 7916</h2>
                         </div>
                     </div>
                     <input type="range" id="tempo" name="tempo" min="0" max="7916" step="1" value="{{tempo_input}}" class="slider">
