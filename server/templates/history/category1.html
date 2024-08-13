@@ -3,12 +3,16 @@
 {% block category1 %}
 <div class="category-wrapper" id="category1">
     <div class="category-top">
-        <h2>Category 1</h2>
+        <h2>Data Collection</h2>
     </div>
     <div class="category-content">
         <div class="text-section">
-            <h3>텍스트 섹션</h3>
-            <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa repellendus, aperiam repellat, debitis ullam maiores quasi excepturi provident fuga ad, asperiores sequi iste expedita nostrum ut officiis natus aut dolore?</div>
+            <h3>데이터 형식 : data = [ 
+                1주차 차트 [ 1~100위의 곡 ],
+                2주차 차트[1~100위의 곡],
+                3주차 차트 [ 1~100위의 곡 ], ···
+                ]</h3>
+            <div>정형 데이터 수집을 위해 Spotify의 API와 python API 중 하나인 billboard.py 를 사용했다. 총 61년의 billboard chart top100차트를 수집해 json으로 저장 후 (곡 제목 - 아티스트) 형식으로 Spotify API에 검색하여 Spotify에 등재되어 있는지 확인하고 해당 곡의 music feature을 수집한다. 제목에 (x , X, Featuring, featuring, With, with, And, and) 이 포함되어 있으면 Spotify에서 검색되지 않아 raw string으로 변환해 검색했다. 그리고 라틴어가 포함되어 있는 경우에도 검색되지 않아 difflib.SequenceMatcher를 사용해 제목의 유사도를 비교해 50% 이상 유사할 경우 검색 결과를 반환했다.</div>
         </div>
         <div class="image-section">
             <h3>이미지 섹션</h3>
