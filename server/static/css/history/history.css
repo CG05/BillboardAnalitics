@@ -1,3 +1,176 @@
+/* =================== History 메인 =================== */
 #wrapper {
     width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+#top-wrapper {
+    width: 100%;
+}
+#top-wrapper h1 {
+    font-weight: bolder;
+    font-size: 40px;
+    font-style: italic;
+}
+#button-wrapper {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+}
+#button-wrapper .button {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    background-color: lightpink;
+    border: 2px lightpink solid;
+    border-radius: 20px;
+    margin: 0 5%;
+    cursor: pointer;
+    transition: .3s;
+    transition-property: box-shadow;
+}
+/* 활성화된 카테고리 버튼에 적용됨 */
+.button-active {
+    border: 2px magenta solid;
+    border-radius: 40px;
+    box-shadow: 
+        0 0 10px magenta,
+        0 0 10px magenta,
+        0 0 10px magenta,
+        0 0 10px magenta,
+        0 0 20px magenta,
+        0 0 30px magenta;
+    transition: .3s;
+    transition-property: box-shadow;
+}
+.hr1 {
+    margin: 30px 0;
+    border: 3px white solid;
+}
+.hr2 {
+    margin: 25px 0;
+    border: 2px white solid;
+}
+/* =================== 카테고리, 섹션 부분 =================== */
+.category-top {
+    margin: 30px 0;
+}
+/* 모든 섹션은 기본적으로 투명한 상태 */
+.category-content > div {
+    margin: 30px 0;
+    opacity: 0;
+}
+/* 현재 화면 상에 들어온 섹션은 불투명하게 변경 */
+.section-active {
+    opacity: 1 !important;
+    transition: 1s !important;
+}
+.text-section {
+
+}
+.image-section {
+
+}
+.image-section .img {
+    
+}
+.img-wrapper {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.horizental-section-content {
+    display:flex;
+}
+.horizental-section-content img {
+    right: 0;
+}
+@media (max-width: 1000px) {
+    #button-wrapper {
+        width: 100%;
+        height: 400px;
+        flex-direction: column;
+    }
+    #button-wrapper .button {
+        flex: 1;
+        width: 50%;
+        margin-top: 30px;
+        margin-left: 25%;
+        border-radius: 20px;
+    }
+}
+/* 화면 크기 작으면 수평 섹션을 수직 섹션과 같이 변경 */
+@media (max-width: 800px) {
+    .horizental-section-content {
+        display:flex;
+        flex-direction: column;
+    }
+    .horizental-section-content div {
+        flex: 1;
+    }
+    .horizental-section-content img {
+        flex: 1;
+        right: auto;
+    }
+}
+
+
+/* =================== 카테고리 섹션 아래 하단 부분 및 fixed 부분 =================== */
+#bottom-wrapper {
+    width: 100%;
+    height: 70px;
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#end-top-button {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: gray 2px solid;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bolder;
+    font-style: italic;
+    cursor: pointer;
+    transition: .2s;
+}
+#end-top-button:hover {
+    background-color: rgb(66, 66, 66);
+    transition: .2s;
+}
+
+#top-button {
+    position: fixed;
+    right: 70px;
+    bottom: 70px;
+    width: 70px;
+    height: 70px;
+    font-weight: bolder;
+    font-size: 20px;
+    color: white;
+    background-color: rgb(66, 66, 66);
+    opacity: .7;
+    border: 2px solid pink;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .2s;
+}
+#top-button:hover {
+    opacity: 1;
+    transition: .2s;
 }
