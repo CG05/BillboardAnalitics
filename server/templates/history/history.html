@@ -6,209 +6,15 @@
 {% load static %}
 
 {% block style %}
-    <!-- <link rel="stylesheet" href="{% static 'css/history.css' %}">  -->
-    <style>
-        #wrapper {
-            width: 100%;
-            padding-top: 50px;
-            padding-bottom: 50px;
-        }
-        #top-wrapper {
-            width: 100%;
-        }
-        #top-wrapper h1 {
-            font-weight: bolder;
-            font-size: 40px;
-            font-style: italic;
-        }
-        #button-wrapper {
-            width: 100%;
-            height: 100px;
-            display: flex;
-            flex-direction: row;
-        }
-        #button-wrapper .button {
-            display: flex;
-            flex: 1;
-            align-items: center;
-            justify-content: center;
-            color: black;
-            font-weight: bold;
-            font-size: 20px;
-            background-color: pink;
-            border: 2px pink solid;
-            border-radius: 40px;
-            margin: 0 5%;
-            cursor: pointer;
-        }
-        .button-active {
-            border: 2px magenta solid;
-            box-shadow: 
-                0 0 10px magenta,
-                0 0 10px magenta,
-                0 0 10px magenta,
-                0 0 10px magenta,
-                0 0 20px magenta,
-                0 0 30px magenta;
-        }
-        .hr1 {
-            margin: 30px 0;
-            border: 3px white solid;
-        }
-        .hr2 {
-            margin: 25px 0;
-            border: 2px white solid;
-        }
-        .category-top {
-            margin: 30px 0;
-        }
-        .category-content > div {
-            margin: 30px 0;
-            opacity: 0;
-        }
-        .text-section {
-
-        }
-        .image-section {
-
-        }
-        .image-section .img {
-            
-        }
-        .img-wrapper {
-            max-width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .horizental-section-content {
-            display:flex;
-        }
-        .horizental-section-content img {
-            right: 0;
-        }
-        @media (max-width: 800px) {
-            .horizental-section-content {
-                display:flex;
-                flex-direction: column;
-            }
-            .horizental-section-content div {
-                flex: 1;
-            }
-            .horizental-section-content img {
-                flex: 1;
-                right: auto;
-            }
-        }
-
-        .section-active {
-            opacity: 1 !important;
-            transition: 1s !important;
-        }
-
-        #bottom-wrapper {
-            width: 100%;
-            height: 70px;
-            margin-top: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #end-top-button {
-            width: 30%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: gray 2px solid;
-            border-radius: 10px;
-            font-size: 20px;
-            font-weight: bolder;
-            font-style: italic;
-            cursor: pointer;
-        }
-
-        #top-button {
-            position: fixed;
-            right: 70px;
-            bottom: 70px;
-            width: 70px;
-            height: 70px;
-            border: 2px solid magenta;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-    </style>  
+    <link rel="stylesheet" href="{% static 'css/history/history.css' %}"> 
 {% endblock %}
 
 {% block startscript %}
-    <script>
 
-    </script>
 {% endblock %}
 
 {% block endscript %}
-    <script>
-        const io = new IntersectionObserver(sections => {
-        sections.forEach(s => {
-            if (s.intersectionRatio > 0) {
-                s.target.classList.add('section-active');
-            }
-            else {
-                s.target.classList.remove('section-active');
-            }
-        })
-        })
-
-        const sectionList = document.querySelectorAll('.category-content > div');
-        sectionList.forEach((s) => {
-            io.observe(s);
-        })
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const buttons = document.querySelectorAll('#button-wrapper .button');
-            const categories = document.querySelectorAll('#body-wrapper > div');
-
-            // 초기 설정 - 첫 번째 카테고리만 표시
-            categories.forEach((cat, index) => {
-                if (index === 0) {
-                    cat.style.display = 'block';
-                    buttons[index].classList.add('button-active');
-                } else {
-                    cat.style.display = 'none';
-                }
-            });
-
-            buttons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const targetId = this.getAttribute('data-category');
-
-                    categories.forEach(category => {
-                        category.style.display = (category.id === targetId) ? 'block' : 'none';
-                    });
-
-                    // 모든 버튼에서 .button-active 클래스를 제거하고, 클릭한 버튼에 추가
-                    buttons.forEach(btn => btn.classList.remove('button-active'));
-                    this.classList.add('button-active');
-                });
-            });
-        });
-
-        const scrollTop = () => {
-            window.scrollTo({top: 0, left:0, behavior: 'smooth'});
-        }
-
-        const topBtn = document.getElementById("top-button");
-        const endTopBtn = document.getElementById("end-top-button")
-        topBtn.addEventListener("click", scrollTop);
-        endTopBtn.addEventListener("click", scrollTop);
-
-    </script>
+    <script src="{% static 'js/history.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -226,15 +32,12 @@
     <div class="hr1"></div>
     <div id="body-wrapper">
         {% include 'history/category1.html' %}
-        <div class="hr2"></div>
         {% include 'history/category2.html' %}
-        <div class="hr2"></div>
         {% include 'history/category3.html' %}
-        <div class="hr2"></div>
         {% include 'history/category4.html' %}
     </div>
     <div id="bottom-wrapper">
-        <div id="end-top-button">상단으로 돌아가기</div>
+        <div id="end-top-button">상단으로</div>
     </div>
     <div id="top-button">TOP</div>
 </div>
