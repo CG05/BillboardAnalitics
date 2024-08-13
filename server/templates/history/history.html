@@ -18,6 +18,38 @@
         }
         #top-wrapper h1 {
             font-weight: bolder;
+            font-size: 40px;
+            font-style: italic;
+        }
+        #button-wrapper {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            flex-direction: row;
+        }
+        #button-wrapper .button {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-weight: bold;
+            font-size: 20px;
+            background-color: pink;
+            border: 2px pink solid;
+            border-radius: 40px;
+            margin: 0 5%;
+            cursor: pointer;
+        }
+        .button-active {
+            border: 2px magenta solid;
+            box-shadow: 
+                0 0 10px magenta,
+                0 0 10px magenta,
+                0 0 10px magenta,
+                0 0 10px magenta,
+                0 0 20px magenta,
+                0 0 30px magenta;
         }
         .hr1 {
             margin: 30px 0;
@@ -73,6 +105,44 @@
             opacity: 1 !important;
             transition: 1s !important;
         }
+
+        #bottom-wrapper {
+            width: 100%;
+            height: 70px;
+            margin-top: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #end-top-button {
+            width: 30%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: gray 2px solid;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bolder;
+            font-style: italic;
+            cursor: pointer;
+        }
+
+        #top-button {
+            position: fixed;
+            right: 70px;
+            bottom: 70px;
+            width: 70px;
+            height: 70px;
+            border: 2px solid magenta;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
     </style>  
 {% endblock %}
 
@@ -99,6 +169,45 @@
         sectionList.forEach((s) => {
             io.observe(s);
         })
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const buttons = document.querySelectorAll('#button-wrapper .button');
+            const categories = document.querySelectorAll('#body-wrapper > div');
+
+            // 초기 설정 - 첫 번째 카테고리만 표시
+            categories.forEach((cat, index) => {
+                if (index === 0) {
+                    cat.style.display = 'block';
+                    buttons[index].classList.add('button-active');
+                } else {
+                    cat.style.display = 'none';
+                }
+            });
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const targetId = this.getAttribute('data-category');
+
+                    categories.forEach(category => {
+                        category.style.display = (category.id === targetId) ? 'block' : 'none';
+                    });
+
+                    // 모든 버튼에서 .button-active 클래스를 제거하고, 클릭한 버튼에 추가
+                    buttons.forEach(btn => btn.classList.remove('button-active'));
+                    this.classList.add('button-active');
+                });
+            });
+        });
+
+        const scrollTop = () => {
+            window.scrollTo({top: 0, left:0, behavior: 'smooth'});
+        }
+
+        const topBtn = document.getElementById("top-button");
+        const endTopBtn = document.getElementById("end-top-button")
+        topBtn.addEventListener("click", scrollTop);
+        endTopBtn.addEventListener("click", scrollTop);
+
     </script>
 {% endblock %}
 
@@ -107,6 +216,12 @@
 <div id="wrapper">
     <div id="top-wrapper">
         <h1>History</h1>
+        <div id="button-wrapper">
+            <div class="button" data-category="category1">Category 1</div>
+            <div class="button" data-category="category2">Category 2</div>
+            <div class="button" data-category="category3">Category 3</div>
+            <div class="button" data-category="category4">Category 4</div>
+        </div>
     </div>
     <div class="hr1"></div>
     <div id="body-wrapper">
@@ -118,9 +233,10 @@
         <div class="hr2"></div>
         {% include 'history/category4.html' %}
     </div>
-
-
-    
+    <div id="bottom-wrapper">
+        <div id="end-top-button">상단으로 돌아가기</div>
+    </div>
+    <div id="top-button">TOP</div>
 </div>
 
 {% endblock %}
