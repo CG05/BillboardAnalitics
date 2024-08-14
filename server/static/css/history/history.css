@@ -92,6 +92,59 @@
 .horizental-section-content img {
     right: 0;
 }
+/* .rotate-section {
+    position: relative;
+    width: 100%;
+}
+.rotate-content > .img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(36, 36, 36);
+}
+.rotate-content > .img-wrapper > img {
+    height: 50vh;
+    overflow:scroll;
+}
+.rotate-content > div {
+    display: flex;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 18px;
+    line-height: 36px;
+}
+.rotate-content-btn {
+    position: absolute;
+    top:0;
+    width: 40px;
+    height: 50vh;
+    font-weight: bolder;
+    font-size: 20px;
+    color: white;
+    background-color: rgb(66, 66, 66);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: .5;
+    transition: .2s;
+    transition-property: background-color, opacity;
+}
+.rotate-content-btn:hover {
+    background-color: gray;
+    opacity: .8;
+    transition-property: background-color, opacity;
+}
+.rotate-section > #nextbtn {
+    right: 0;
+}
+.rotate-section > #prevbtn {
+    left: 0;
+} */
+
+
 @media (max-width: 1000px) {
     #button-wrapper {
         width: 100%;
@@ -119,6 +172,13 @@
         flex: 1;
         right: auto;
     }
+    /* .rotate-content > .img-wrapper > img {
+        height: 30vh;
+        overflow:scroll;
+    }
+    .rotate-content-btn {
+        height: 30vh;
+    } */
 }
 
 
