@@ -1,41 +1,99 @@
 {% load static %}
 
 {% block category2 %}
+
 <div class="category-wrapper"  id="category2">
     <div class="category-top">
-        <h2>Category 2</h2>
+        <h2>Data Integration</h2>
     </div>
     <div class="category-content">
         <div class="text-section">
-            <h3>텍스트 섹션</h3>
-            <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa repellendus, aperiam repellat, debitis ullam maiores quasi excepturi provident fuga ad, asperiores sequi iste expedita nostrum ut officiis natus aut dolore?</div>
+            <h3>개요</h3>
+            <div>
+                조원들 각자 추출한 billboardchart csv파일을 통합하고 결측치, 이상치 제거 후 표준화, pca, lda 적용했다.<br>
+                머신러닝으로 시계열 분석을 하기 위해서 데이터프레임의 column안에 date라는 순서가 있어야 한다.<br>
+                날짜 데이터 LabelEncoder로 인코딩 및 시계열로 Sequencing & Flattening 처리를 했다.
+            </div>
         </div>
-        <div class="image-section">
-            <h3>이미지 섹션</h3>
-            <div class="img-wrapper">
-                <img src="{% static 'image/kgitedulogo.png' %}">
+        <div class="text-section">
+            <h3>데이터 통합</h3>
+            <div>
+                1. 데이터프레임, 레이블의 csv 파일들의 목록을 각각 추출<br>
+                2. csv 파일을 데이터프레임으로 불러와 리스트로 저장<br>
+                3. 리스트에 저장된 모든 데이터프레임들을 하나의 데이터프레임으로 통합<br>
+                4. 통합된 데이터프레임을 다시 csv로 변환하여 저장
             </div>
         </div>
         <div class="horizental-section">
-            <h3>수평 섹션 - 텍스트, 이미지</h3>
+            <h3>결측치 중앙값으로 치환</h3>
             <div class="horizental-section-content">
-                <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum repellendus distinctio adipisci, voluptatem dolores asperiores quae mollitia dolore laboriosam aperiam magni, iure consectetur possimus quos, at reiciendis. Pariatur, officiis tenetur.</div>
-                <img src="{% static 'image/kgitedulogo.png' %}">
+                <img src="{% static 'image/data_integration/1.png' %}">
+                <div class="blank"></div>
+                <div class="text">
+                    Spotify검색 결과가 나오지 않는 데이터는 저장하지 않고,<br>
+                    검색 결과는 나오지만 feature가 누락된 경우 <br>
+                    각 feature의 중앙값으로 결측치 처리함
+                </div>
             </div>
         </div>
         <div class="horizental-section">
-            <h3>수평 섹션 - 이미지, 텍스트</h3>
+            <h3>날짜 정렬</h3>
             <div class="horizental-section-content">
-                <img src="{% static 'image/kgitedulogo.png' %}">
-                <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum repellendus distinctio adipisci, voluptatem dolores asperiores quae mollitia dolore laboriosam aperiam magni, iure consectetur possimus quos, at reiciendis. Pariatur, officiis tenetur.</div>
+                <img src="{% static 'image/data_integration/2.png' %}">
+                <div class="blank"></div>
+                <div class="text">
+                    각각의 csv파일을 통합하면서 15년 단위로 date가 0으로<br>
+                    초기화되기 때문에 date를 순차적으로 나오게 함<br>
+                </div>
             </div>
         </div>
-        <div class="vertical-section">
-            <h3>수직 섹션</h3>
-            <div class="img-wrapper">
-                <img src="{% static 'image/kgitedulogo.png' %}">
+        <div class="horizental-section">
+            <h3>결측치 처리</h3>
+            <div class="horizental-section-content">
+                <img src="{% static 'image/data_integration/3.png' %}">
+                <div class="blank"></div>
+                <div class="text">
+                    mode라는 feature는 단조가 0, 장조가 1로 나오는 feature 이다.<br>
+                    하지만 2 라는 이상치가 존재해 장조인 1로 변환 처리함<br>
+                </div>
             </div>
-            <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa repellendus, aperiam repellat, debitis ullam maiores quasi excepturi provident fuga ad, asperiores sequi iste expedita nostrum ut officiis natus aut dolore?</div>
+        </div>
+        <div class="horizental-section">
+            <h3>결측치 처리</h3>
+            <div class="horizental-section-content">
+                <img src="{% static 'image/data_integration/3.png' %}">
+                <div class="blank"></div>
+                <div class="text">
+                    mode라는 feature는 단조가 0, 장조가 1로 나오는 feature 이다.<br>
+                    하지만 2 라는 이상치가 존재해 장조인 1로 변환 처리함<br>
+                </div>
+            </div>
+        </div>
+        <div class="horizental-section">
+            <h3>데이터 순서 셔플</h3>
+            <div class="horizental-section-content">
+                <img src="{% static 'image/data_integration/4.png' %}">
+                <div class="blank"></div>
+                <div class="text">
+                    rank 순서대로 저장된 label에 의해 과대적합될 가능성이 있어 각 주차별로 저장된 100개의 곡을 섞음<br>
+                    1963년부터 2022년까지 총 3132개의 주로 구성되어 있기 때문에 이 함수를 실행시키면 X와 y의 shape이 ((3132,), (3132,)) 로 변힘<br>
+                   하나의 행에 100개의 곡이 저장되어 있기 때문이다.
+                </div>
+            </div>
+        </div>
+        <div class="horizental-section">
+            <h3>데이터 Shape 평탄화</h3>
+            <div class="horizental-section-content">
+                <img src="{% static 'image/data_integration/5.png' %}">
+                <div class="blank"></div>
+                <div class="text">
+                    변한 shape을 기존의 shape으로 바꾸기 위해 flatten함수를 적용<br>
+                    모델에 넣기 위해 다차원 배열을 X는 2차원, y는 1차원으로 변환<br>
+                    X.shape = (313187, 11)<br>
+                    y.shape =  (313187, )<br>
+                    X.shape[0] = y.shape[0]
+                </div>
+            </div>
         </div>
     </div>
 </div>

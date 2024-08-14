@@ -47,10 +47,10 @@
     opacity: .8;
     transition-property: background-color, opacity;
 }
-.rotate-section > #nextbtn {
+.rotate-section > #nextbtn3-1 {
     right: 0;
 }
-.rotate-section > #prevbtn {
+.rotate-section > #prevbtn3-1 {
     left: 0;
 }
 @media (max-width: 800px) {
@@ -70,7 +70,7 @@
         <h2>Visualizing</h2>
     </div>
     <div class="category-content">
-        <div class="rotate-section">
+        <div class="rotate-section" id="rotate3-1">
             <div class="rotate-content">
                 <div class="img-wrapper">
                     <img src="{% static 'image/1.png' %}" alt="Rank Assumption">
@@ -185,37 +185,37 @@
                     → 정확도가 가장 높게 나와 이 방법을 사용하기로 했다.
                 </div>
             </div>
-            <div class="rotate-content-btn" id="prevbtn" role="button"><</div>
-            <div class="rotate-content-btn" id="nextbtn" role="button">></div>
+            <div class="rotate-content-btn" id="prevbtn3-1" role="button"><</div>
+            <div class="rotate-content-btn" id="nextbtn3-1" role="button">></div>
         </div>
     </div>
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-    const divs = document.querySelectorAll('.rotate-content');
+    const divs3_1 = document.querySelectorAll('#rotate3-1 > .rotate-content');
     let currentIndex = 0;
 
-    document.getElementById('nextbtn').addEventListener('click', function() {
+    document.getElementById('nextbtn3-1').addEventListener('click', function() {
         // Hide the current div
-        divs[currentIndex].style.display = 'none';
+        divs3_1[currentIndex].style.display = 'none';
         
         // Calculate the next index
-        currentIndex = (currentIndex + 1) % divs.length;
+        currentIndex = (currentIndex + 1) % divs3_1.length;
         
         // Show the next div
-        divs[currentIndex].style.display = 'block';
+        divs3_1[currentIndex].style.display = 'block';
     });
-    document.getElementById('prevbtn').addEventListener('click', function() {
+    document.getElementById('prevbtn3-1').addEventListener('click', function() {
         // Hide the current div
-        divs[currentIndex].style.display = 'none';
+        divs3_1[currentIndex].style.display = 'none';
         
         // Calculate the next index
         currentIndex = (currentIndex - 1)
         if (currentIndex < 0) {
-            currentIndex = divs.length - 1;
+            currentIndex = divs3_1.length - 1;
         }
         // Show the next div
-        divs[currentIndex].style.display = 'block';
+        divs3_1[currentIndex].style.display = 'block';
     });
 });
 </script>

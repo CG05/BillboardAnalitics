@@ -89,7 +89,15 @@
 .horizental-section-content {
     display:flex;
 }
+.horizental-section-content > .blank {
+    width: 30px;
+}
+.horizental-section-content > .text {
+    align-items: center;
+    font-size: 20px;
+}
 .horizental-section-content img {
+    width: 390px;
     right: 0;
 }
 /* .rotate-section {
