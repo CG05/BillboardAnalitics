@@ -63,7 +63,7 @@
 }
 /* 모든 섹션은 기본적으로 투명한 상태 */
 .category-content > div {
-    margin: 30px 0;
+    margin: 40px 0;
     opacity: 0;
 }
 /* 현재 화면 상에 들어온 섹션은 불투명하게 변경 */
@@ -91,6 +91,9 @@
 }
 .horizental-section-content > .blank {
     width: 30px;
+}
+.horizental-section-content > .box {
+    width: 60px;
 }
 .horizental-section-content > .text {
     align-items: center;
@@ -241,4 +244,9 @@
 #top-button:hover {
     opacity: 1;
     transition: .2s;
+}
+
+/* =================== vertical.css =================== */
+.vertical-section{
+    margin-top:50px;
 }
