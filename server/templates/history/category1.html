@@ -7,39 +7,59 @@
     </div>
     <div class="category-content">
         <div class="text-section">
-            <h3>데이터 형식 : data = [ 
-                1주차 차트 [ 1~100위의 곡 ],
-                2주차 차트[1~100위의 곡],
-                3주차 차트 [ 1~100위의 곡 ], ···
-                ]</h3>
-            <div>정형 데이터 수집을 위해 Spotify의 API와 python API 중 하나인 billboard.py 를 사용했다. 총 61년의 billboard chart top100차트를 수집해 json으로 저장 후 (곡 제목 - 아티스트) 형식으로 Spotify API에 검색하여 Spotify에 등재되어 있는지 확인하고 해당 곡의 music feature을 수집한다. 제목에 (x , X, Featuring, featuring, With, with, And, and) 이 포함되어 있으면 Spotify에서 검색되지 않아 raw string으로 변환해 검색했다. 그리고 라틴어가 포함되어 있는 경우에도 검색되지 않아 difflib.SequenceMatcher를 사용해 제목의 유사도를 비교해 50% 이상 유사할 경우 검색 결과를 반환했다.</div>
+            <h3>개요<br></h3>
+            <div>정형 데이터 수집을 위해 Spotify의 API와 python API 중 하나인 billboard.py 를 사용했다.<br>
+                총 61년의 billboard chart top100차트를 수집해 json으로 저장 후 (곡 제목 - 아티스트) 형식으로<br> 
+                Spotify API에 검색하여 Spotify에 등재되어 있는지 확인하고 해당 곡의 music feature을 수집한다.<br><br>
+                제목에 (x , X, Featuring, featuring, With, with, And, and) 이 포함되어 있으면 Spotify에서 검색되지 않아<br>
+                raw string으로 변환해 검색했다. 그리고 라틴어가 포함되어 있는 경우에도 검색되지 않아 <br>
+                difflib.SequenceMatcher를 사용해 제목의 유사도를 비교해 50% 이상 유사할 경우 검색 결과를 반환했다.<br></div>
         </div>
-        <div class="image-section">
-            <h3>이미지 섹션</h3>
-            <div class="img-wrapper">
-                <img src="{% static 'image/kgitedulogo.png' %}">
-            </div>
-        </div>
-        <div class="horizental-section">
-            <h3>수평 섹션 - 텍스트, 이미지</h3>
+        <div class="horizental-section" style="margin-top:140px;">
+            <h2 style="margin-bottom:40px; color:lightpink;">>데이터 저장 형식</h2>
             <div class="horizental-section-content">
-                <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum repellendus distinctio adipisci, voluptatem dolores asperiores quae mollitia dolore laboriosam aperiam magni, iure consectetur possimus quos, at reiciendis. Pariatur, officiis tenetur.</div>
-                <img src="{% static 'image/kgitedulogo.png' %}">
+                <img src="{% static 'image/datacollection/datacollection1.png' %}">
+                <div class="blank"></div>
+                <div class="text">
+                    billboad.py에서 추출한 데이터 형식이다.<br>
+                    (json 으로 저장)
+                </div>
             </div>
         </div>
-        <div class="horizental-section">
-            <h3>수평 섹션 - 이미지, 텍스트</h3>
+        <div class="horizental-section"  style="margin-top:100px;">
+            <div class="horizental-section-content" style="align-items:right;">
+                <div style="text-align:right; width:50%">1 ~ 100위 곡의 List 안에 저장은 옆과 같다.</div>
+                <div class="blank" style="width:60px;"></div>
+                <img src="{% static 'image/datacollection/datacollection2.png' %}">
+            </div>
+        </div>
+        <div class="horizental-section" style="margin-top:120px;">
             <div class="horizental-section-content">
-                <img src="{% static 'image/kgitedulogo.png' %}">
-                <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum repellendus distinctio adipisci, voluptatem dolores asperiores quae mollitia dolore laboriosam aperiam magni, iure consectetur possimus quos, at reiciendis. Pariatur, officiis tenetur.</div>
+                <img src="{% static 'image/datacollection/datacollection3.png' %}">
+                <div class="blank" style="width:60px;"></div>
+                <div >추출된 feature들의 종류는 총 10가지다.</div>
             </div>
         </div>
-        <div class="vertical-section">
-            <h3>수직 섹션</h3>
-            <div class="img-wrapper">
-                <img src="{% static 'image/kgitedulogo.png' %}">
+        <div class="vertical-section" style="margin-top:170px;">
+            <h2 style="margin-bottom:30px; color:lightpink">>>Spotify에서 검색하기</h2>
+            <div class="img-wrapper" style="margin-bottom:20px;">
+                <img src="{% static 'image/datacollection/datacollection4.png' %}">
             </div>
-            <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa repellendus, aperiam repellat, debitis ullam maiores quasi excepturi provident fuga ad, asperiores sequi iste expedita nostrum ut officiis natus aut dolore?</div>
+            <div style="text-align:center;">billboard.py에서 추출한 json 데이터 안에서 중복된 곡들을 제거한 새로운 list를 생성한다.</div>
+        </div>
+        <div class="horizental-section"  style="margin-top:120px;">
+            <div class="horizental-section-content">
+                <img src="{% static 'image/datacollection/datacollection5.png' %}">
+                <div class="blank" style="width:60px;"></div>
+                <div >제거된 song Set으로 Spotify에서 검색하기<br>전에 곡 제목을 raw string 변환 </div>
+            </div>
+        </div>
+        <div class="horizental-section" style="margin-top:130px;">
+            <div class="horizental-section-content">
+                <div style="text-align:right; width:50%">곡 제목을 소문자로 변경 후 유사도를 측정해<br> 유사도 50%이상의 제목들만 저장한다.</div>
+                <div class="blank" style="width:60px;"></div>
+                <img src="{% static 'image/datacollection/datacollection6.png' %}">
+            </div>
         </div>
     </div>
 </div>
