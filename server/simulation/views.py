@@ -4,8 +4,6 @@ import random
 def simulation(request):
     # 시뮬레이션 페이지 요청에 보낼 Audio Feauture별 수치를 우선 초기화
     content = {
-        'dateyear_input' : 2023,
-        'datemonth_input' : 1,
         'danceability_input' : 0,
         'energy_input' : 0,
         'loudness_input' : 0,
