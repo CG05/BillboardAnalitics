@@ -3,39 +3,44 @@
 {% block category4 %}
 <div class="category-wrapper" id="category4">
     <div class="category-top">
-        <h2>Category 4</h2>
+        <h2>Final Modeling</h2>
+    </div>
+    <div class="text-section">
+        <h3>개요<br></h3>
+        <div>앞서 여러 방법으로 모델링 한 결과 LDA 데이터를 통해 KNeighborsRegressor을 시도하기로 했다.<br> 
+            2024년의 Rank를 예측하기 위해서는 2023년도의 데이터를 가지고 모델링한 모델이 가장 정확하다고<br> 
+            생각해 2023년 데이터를 가지고 다시 모델링을 했다.<br> 
+            n_components는 분산분석표를 통해 누적분산80%를 넘기는 4를 사용했다.<br> 
+            여러번의 Gridsearch를 통해서 최종적으로  algorithm: 'auto', leaf_size: 30, metric: 'minkowski',<br>  
+            n_neighbors: 150, p: 1, weights: 'distance'가 도출됐고 약 72%의 정확도를 나타낸다.<br></div>
     </div>
     <div class="category-content">
-        <div class="text-section">
-            <h3>텍스트 섹션</h3>
-            <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa repellendus, aperiam repellat, debitis ullam maiores quasi excepturi provident fuga ad, asperiores sequi iste expedita nostrum ut officiis natus aut dolore?</div>
+        <div class="vertical-section" style="margin-top:140px;">
+            <h2 style="margin-bottom:30px; color:lightpink">>>Spotify에서 검색하기</h2>
+            <div class="img-wrapper" style="margin-bottom:30px;">
+                <img src="{% static 'image/final.png' %}">
+            </div>
+            <div style="text-align:center;">algorithm: 'auto', leaf_size: 30, metric: 'minkowski',<br> 
+                n_neighbors: 150, p: 1, weights: 'distance' 의 <br>
+                파라미터를 적용한 최종 예측 결과</div>
         </div>
-        <div class="image-section">
-            <h3>이미지 섹션</h3>
-            <div class="img-wrapper">
-                <img src="{% static 'image/kgitedulogo.png' %}">
+        <div class="vertical-section"  style="margin-top:140px;">
+            <div class="vertical-section-content">
+                <div class="img-wrapper" style="margin-bottom:30px;">
+                    <img src="{% static 'image/score.png' %}">
+                </div>
+                <div style="text-align:center;">2023년 데이터를 test_size=0.3으로 X_train, X_test, y_train, y_test<br>
+                    를 생성해 knn.score와 cross_val_score를 출력 </div>
             </div>
         </div>
-        <div class="horizental-section">
-            <h3>수평 섹션 - 텍스트, 이미지</h3>
-            <div class="horizental-section-content">
-                <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum repellendus distinctio adipisci, voluptatem dolores asperiores quae mollitia dolore laboriosam aperiam magni, iure consectetur possimus quos, at reiciendis. Pariatur, officiis tenetur.</div>
-                <img src="{% static 'image/kgitedulogo.png' %}">
+        <div class="vertical-section" style="margin-top:140px;">
+            <div class="vertical-section-content">
+                <div class="img-wrapper" style="margin-bottom:30px;">
+                    <img src="{% static 'image/pickle.png' %}">
+                </div>
+                <div style="text-align:center;">학습된 모델을 pickle로 저장해서 server와 연결했다.</div>
+
             </div>
-        </div>
-        <div class="horizental-section">
-            <h3>수평 섹션 - 이미지, 텍스트</h3>
-            <div class="horizental-section-content">
-                <img src="{% static 'image/kgitedulogo.png' %}">
-                <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum repellendus distinctio adipisci, voluptatem dolores asperiores quae mollitia dolore laboriosam aperiam magni, iure consectetur possimus quos, at reiciendis. Pariatur, officiis tenetur.</div>
-            </div>
-        </div>
-        <div class="vertical-section">
-            <h3>수직 섹션</h3>
-            <div class="img-wrapper">
-                <img src="{% static 'image/kgitedulogo.png' %}">
-            </div>
-            <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa repellendus, aperiam repellat, debitis ullam maiores quasi excepturi provident fuga ad, asperiores sequi iste expedita nostrum ut officiis natus aut dolore?</div>
         </div>
     </div>
 </div>
