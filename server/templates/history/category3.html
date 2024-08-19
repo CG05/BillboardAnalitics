@@ -78,9 +78,7 @@
                 <div>여러 개의 색깔로 표현된 것은 
                     1~12월 까지 시간에 흐름에 따른 
                     feature별 평균 값<br>
-                    → 각 월에 뚜렷하게 나타나는 feature별 
-                    특징은 존재하지 않지만 시간에  흐름에
-                    Rank가 영향을 받는다는 점을 유추했다.
+                    → 시간에 따른 추세를 보이지만 정상성의 띄지 않기 때문에 시계열 분석으로 사용하기 어렵다.
                 </div>
             </div>
             <div class="rotate-content" style="display: none;">
@@ -89,19 +87,19 @@
                 </div>
                 <div>12개월 동안의 Rank와 
                     feature의 상관 관계의 변화 추이<br>
-                    → 시간의 흐름에 rank가 영향을 받는다.
+                    → feature와 Rank는 상관성이 있다.
                 </div>
             </div>
             <div class="rotate-content" style="display: none;">
                 <div class="img-wrapper">
                     <img src="{% static 'image/3.png' %}" alt="Regulation Model Comparision">
                 </div>
-                <div>Ridge 모델 학습 세트 정확도: 0.03<br>
-                    Ridge 모델 검증 세트 정확도: 0.029<br>
-                    Lasso 모델 학습 세트 정확도: 0.03<br>
-                    Lasso 모델 검증 세트 정확도: 0.029<br>
-                    ElasticNet 모델 학습 세트 정확도: 0.03<br>
-                    ElasticNet 모델 검증 세트 정확도: 0.029<br>
+                <div>Ridge 모델 학습 세트 정확도: 0.029<br>
+                    Ridge 모델 검증 세트 정확도: -0.011<br>
+                    Lasso 모델 학습 세트 정확도: 0.028<br>
+                    Lasso 모델 검증 세트 정확도: -0.01<br>
+                    ElasticNet 모델 학습 세트 정확도: 0.028<br>
+                    ElasticNet 모델 검증 세트 정확도: -0.009<br>
                 </div>
             </div>
             <div class="rotate-content" style="display: none;">
@@ -130,8 +128,8 @@
                 </div>
                 <div>
                     원본 데이터 knn 회귀 정확도 :<br>
-                    학습 세트 정확도 :  1.0
-                    검증 세트 정확도 :  -0.997
+                    학습 세트 정확도 :  0.688
+                    검증 세트 정확도 :  -0.332
                 </div>
             </div>
             <div class="rotate-content" style="display: none;">
@@ -140,8 +138,8 @@
                 </div>
                 <div>
                     표준화 데이터 knn 회귀 정확도 :<br>
-                    학습 세트 정확도 :  1.0
-                    검증 세트 정확도 :  -0.945
+                    학습 세트 정확도 :  0.687
+                    검증 세트 정확도 :  -0.331
                 </div>
             </div>
             <div class="rotate-content" style="display: none;">
@@ -150,8 +148,8 @@
                 </div>
                 <div>
                     PCA 데이터 knn 회귀 정확도 :<br>
-                    학습 세트 정확도 :  1.0<br>
-                    검증 세트 정확도 :  -1.278
+                    학습 세트 정확도 :  0.687<br>
+                    검증 세트 정확도 :  -0.309
                 </div>
             </div>
             <div class="rotate-content" style="display: none;">
@@ -160,8 +158,8 @@
                 </div>
                 <div>
                     PCA + 표준화 데이터 knn 회귀 정확도 :<br>
-                    학습 세트 정확도 :  1.0<br>
-                    검증 세트 정확도 :  -0.985
+                    학습 세트 정확도 :  0.686<br>
+                    검증 세트 정확도 :  -0.466
                 </div>
             </div>
             <div class="rotate-content" style="display: none;">
@@ -170,8 +168,9 @@
                 </div>
                 <div>
                     LDA 데이터 knn 회귀 정확도 :<br>
-                    학습 세트 정확도 :  1.0<br>
-                    검증 세트 정확도 :  -1.102
+                    학습 세트 정확도 :  0.689<br>
+                    검증 세트 정확도 :  -0.23<br>
+                    → 정확도가 가장 높게 나와 이 방법을 사용하기로 했다.
                 </div>
             </div>
             <div class="rotate-content" style="display: none;">
@@ -180,9 +179,8 @@
                 </div>
                 <div>
                     LDA + 표준화 데이터 knn 회귀 정확도 :<br>
-                    학습 세트 정확도 :  1.0<br>
-                    검증 세트 정확도 :  -0.769<br>
-                    → 정확도가 가장 높게 나와 이 방법을 사용하기로 했다.
+                    학습 세트 정확도 :  0.69<br>
+                    검증 세트 정확도 :  -0.237
                 </div>
             </div>
             <div class="rotate-content-btn" id="prevbtn3-1" role="button"><</div>
