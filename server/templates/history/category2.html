@@ -11,8 +11,8 @@
             <h3>개요</h3>
             <div>
                 조원들 각자 추출한 billboardchart csv파일을 통합하고 결측치, 이상치 제거 후 표준화, pca, lda 적용했다.<br>
-                머신러닝으로 시계열 분석을 하기 위해서 데이터프레임의 column안에 date라는 순서가 있어야 한다.<br>
-                날짜 데이터 LabelEncoder로 인코딩 및 시계열로 Sequencing & Flattening 처리를 했다.
+                데이터 자체는 시계열 데이터지만 시계열분석을 시도했을 때 정확도가 더 낮게 나와 date를 누락시키고 진행했다.<br>
+                날짜 데이터 LabelEncoder로 인코딩 및 시계열로 분석할 땐 Sequencing & Flattening 처리를 했다.
             </div>
         </div>
         <div class="text-section">
